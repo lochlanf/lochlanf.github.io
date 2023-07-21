@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -122,21 +122,10 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine" class="nav-link active" data-scroll-target="#connecting-to-your-virtual-machine"><span class="toc-section-number">2.1</span>  Connecting to your Virtual Machine</a></li>
-  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line" class="nav-link" data-scroll-target="#navigating-on-the-command-line"><span class="toc-section-number">2.2</span>  Navigating on the command line</a></li>
-  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories" class="nav-link" data-scroll-target="#creating-files-and-directories"><span class="toc-section-number">2.3</span>  Creating files and directories</a></li>
-  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files" class="nav-link" data-scroll-target="#copying-moving-and-deleting-files"><span class="toc-section-number">2.4</span>  Copying, moving and deleting files</a></li>
-  <li><a href="#wild-cards" id="toc-wild-cards" class="nav-link" data-scroll-target="#wild-cards"><span class="toc-section-number">2.5</span>  Wild cards</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -154,7 +143,17 @@ ul.task-list li input[type="checkbox"] {
   
 
 </header>
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine"><span class="toc-section-number">2.1</span>  Connecting to your Virtual Machine</a></li>
+  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line"><span class="toc-section-number">2.2</span>  Navigating on the command line</a></li>
+  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">2.3</span>  Creating files and directories</a></li>
+  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">2.4</span>  Copying, moving and deleting files</a></li>
+  <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">2.5</span>  Wild cards</a></li>
+  </ul>
+</nav>
 <p>Bioinformatic analysis is conducted using a command-line interface (CLI). This is a text-based interface that allows users to interact directly with the computers operating system by executing commands. This is in contrast with the graphical user interface (GUI) that you might be familiar with, where instructions are sent to the computer via a point-aim-click mechanism. Below is an example of how one might view the contents of a directory using a CLI (Left) and a GUI (Right). The most common shells are Bash and Zsh. These shells typically operate in Unix based operating systems. We will be using Ubuntu-based virtual machines in this course.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -494,7 +493,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./W1_1.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></span>
