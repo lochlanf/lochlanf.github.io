@@ -147,15 +147,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#working-on-the-command-line" id="toc-working-on-the-command-line"><span class="toc-section-number">2</span>  Working on the command line</a>
-  <ul>
-  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine"><span class="toc-section-number">2.1</span>  Connecting to your Virtual Machine</a></li>
-  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line"><span class="toc-section-number">2.2</span>  Navigating on the command line</a></li>
-  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">2.3</span>  Creating files and directories</a></li>
-  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">2.4</span>  Copying, moving and deleting files</a></li>
-  <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">2.5</span>  Wild cards</a></li>
-  <li><a href="#working-with-file-content" id="toc-working-with-file-content"><span class="toc-section-number">2.6</span>  Working with file content</a></li>
-  </ul></li>
+  <li><a href="#working-on-the-command-line" id="toc-working-on-the-command-line"><span class="toc-section-number">2</span>  Working on the command line</a></li>
+  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine"><span class="toc-section-number">3</span>  Connecting to your Virtual Machine</a></li>
+  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line"><span class="toc-section-number">4</span>  Navigating on the command line</a></li>
+  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">5</span>  Creating files and directories</a></li>
+  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">6</span>  Copying, moving and deleting files</a></li>
+  <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">7</span>  Wild cards</a></li>
+  <li><a href="#working-with-file-content" id="toc-working-with-file-content"><span class="toc-section-number">8</span>  Working with file content</a></li>
   </ul>
 </nav>
 <section id="working-on-the-command-line" class="level1" data-number="2">
@@ -173,8 +171,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Integration - Shell scripting allows you to integrate several programs in workflows. For example, might make a shell script that calls FastQC to inspect reads and then TrimGalore! to remove adapters. This can be done in a single script</p></li>
 <li><p>Efficiency - Graphical user interfaces can be resource intensive. Using the shell frees resources that would usually be used for the GUI.</p></li>
 </ul>
-<section id="connecting-to-your-virtual-machine" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="connecting-to-your-virtual-machine"><span class="header-section-number">2.1</span> Connecting to your Virtual Machine</h2>
+</section>
+<section id="connecting-to-your-virtual-machine" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Connecting to your Virtual Machine</h1>
 <p>There are several important steps to connect to your virtual machine.</p>
 <p><strong>Mac OSX/Linux based computers</strong></p>
 <ol type="1">
@@ -206,8 +205,8 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><img src="images/Screenshot 2023-07-17 at 1.58.11 pm.png" class="img-fluid"></p>
 </section>
-<section id="navigating-on-the-command-line" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="navigating-on-the-command-line"><span class="header-section-number">2.2</span> Navigating on the command line</h2>
+<section id="navigating-on-the-command-line" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Navigating on the command line</h1>
 <p>Navigating on the command line is an important skill and mastery of navigation will substantially reduce your time troubleshooting basic path related errors. Before we introduce the basic commands used for navigation it is important to introduce the concept of relative and absolute paths. Both can be used to specify the location of a directory or file but there is an important distinction between them.</p>
 <p><strong>Absolute Path</strong>: The absolute path of a file or directory begins at the root directory and specifies the full location of a file in the file system. This is the exact path from the root <code>/</code> to the file, and does not rely on the current working directory. Absolute pathways always begin with a forward slash <code>/</code>. Here is an example of an absolute path:</p>
 <ul>
@@ -290,16 +289,16 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Use the <code>ls</code> command to list the contents of the week_1 directory. There are several options associated with this command. You can view these (and options associated with any other command) using the man command. Try out a few, especially the -a option. What do you notice?</strong></p>
 </blockquote>
 </section>
-<section id="creating-files-and-directories" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="creating-files-and-directories"><span class="header-section-number">2.3</span> Creating files and directories</h2>
+<section id="creating-files-and-directories" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Creating files and directories</h1>
 <p>We can create files and directories using the <code>touch</code> and <code>mkdir</code> commands. Touch will create an empty file and mkdir will create a new directory. Lets give it a try:</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 4:</strong></p>
 <p><strong>Within the week_1 directory, create a directory called “src”. Within this directory, create an empty file called script_1.sh</strong></p>
 </blockquote>
 </section>
-<section id="copying-moving-and-deleting-files" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="copying-moving-and-deleting-files"><span class="header-section-number">2.4</span> Copying, moving and deleting files</h2>
+<section id="copying-moving-and-deleting-files" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Copying, moving and deleting files</h1>
 <p>There are occasions when we want to copy, move or even delete files from the shell. This can be achieved using the <code>cp</code>, <code>mv</code> and <code>rm</code> functions, respectively.</p>
 <ul>
 <li>The basic syntax for <code>cp</code> and <code>mv</code> is as follows: <code>cp source_file target_file</code></li>
@@ -309,8 +308,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Within the week_1 directory, create a couple of files using the touch command. Explore the <code>cp</code> and <code>mv</code> commands by moving these files around and creating new copies. When you are done clean up the files you have created with <code>rm.</code></strong></p>
 </blockquote>
 </section>
-<section id="wild-cards" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="wild-cards"><span class="header-section-number">2.5</span> Wild cards</h2>
+<section id="wild-cards" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Wild cards</h1>
 <p>Sometimes when we are performing tasks in bash we would like to identify patterns in text strings. For instance, I might have a large set of fastq files from a paired-end sequencing run. Read pairs are usually denoted by R1 and R2. I can use wild cards to identify all the R1 fastq files in a directory in a directory by using the following command</p>
 <p><code>ls *R1.fastq</code></p>
 <p>There are several wildcards in Bash:</p>
@@ -362,8 +361,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Let’s try a few examples. In the <code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
 </blockquote>
 </section>
-<section id="working-with-file-content" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="working-with-file-content"><span class="header-section-number">2.6</span> Working with file content</h2>
+<section id="working-with-file-content" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Working with file content</h1>
 <p>There are several ways we can work with the contents of files in Bash. To view files we can leverage a suite of in-built tools, including <code>cat</code>, <code>less</code>, <code>head</code> and <code>tail</code></p>
 <table class="table">
 <colgroup>
@@ -412,7 +411,6 @@ ul.task-list li input[type="checkbox"] {
 </table>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
