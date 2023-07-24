@@ -153,7 +153,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">5</span>  Creating files and directories</a></li>
   <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">6</span>  Copying, moving and deleting files</a></li>
   <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">7</span>  Wild cards</a></li>
-  <li><a href="#working-with-file-content" id="toc-working-with-file-content"><span class="toc-section-number">8</span>  Working with file content</a></li>
+  <li><a href="#viewing-file-content" id="toc-viewing-file-content"><span class="toc-section-number">8</span>  Viewing file content</a></li>
+  <li><a href="#searching-file-content" id="toc-searching-file-content"><span class="toc-section-number">9</span>  Searching file content</a></li>
+  <li><a href="#editing-files---sed" id="toc-editing-files---sed"><span class="toc-section-number">10</span>  Editing files - Sed</a></li>
+  <li><a href="#editing-files---nano" id="toc-editing-files---nano"><span class="toc-section-number">11</span>  Editing files - Nano</a></li>
   </ul>
 </nav>
 <section id="working-on-the-command-line" class="level1" data-number="2">
@@ -361,12 +364,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Let’s try a few examples. In the <code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
 </blockquote>
 </section>
-<section id="working-with-file-content" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Working with file content</h1>
+<section id="viewing-file-content" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Viewing file content</h1>
 <p>There are several ways we can work with the contents of files in Bash. To view files we can leverage a suite of in-built tools, including <code>cat</code>, <code>less</code>, <code>head</code> and <code>tail</code></p>
 <table class="table">
 <colgroup>
-<col style="width: 4%">
+<col style="width: 5%">
 <col style="width: 73%">
 <col style="width: 21%">
 </colgroup>
@@ -409,6 +412,65 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<blockquote class="blockquote">
+<p><strong>Exercise 7:</strong></p>
+<p><strong>In the <code>data/vcf</code> you will find a large variant call file (we will learn what the contents of this file mean in later weeks). Using the commands above, explore this file. What do you think the most effective way to navigate this file? !!!!!!ADD VCF File!!!!!</strong></p>
+</blockquote>
+</section>
+<section id="searching-file-content" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Searching file content</h1>
+<p>Sometimes we will want to search and extract certain phrases from files. For this we can use the <code>grep</code> tool. <code>grep</code> will search for patterns in a file and return them to the terminal. The <code>grep</code> tool has several handy options including regular pattern matching, inverted search, and pattern counting. This is an important tool that you will use in several workflows, check out the manual to see all the relevant options.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 8:</strong></p>
+<p><strong>Earlier we counted the number of sequences in each fasta file in <code>data/sequence</code>. Now, using <code>grep</code> and the wildcards that you learned earlier:</strong></p>
+<ul>
+<li><p><strong>Search for all sequences in the fasta files containing the string <code>TTG</code>.</strong></p></li>
+<li><p><strong>Count the number of times <code>TTG</code> appears at least once in each sequence, in each fasta file</strong></p></li>
+<li><p><strong>Search for all sequences that don’t contain <code>TTG</code></strong></p></li>
+<li><p><strong>Search for all sequences that contain <code>AAA</code> in <code>sequence_1.fasta</code> to <code>sequence_5.fasta</code></strong></p></li>
+</ul>
+</blockquote>
+</section>
+<section id="editing-files---sed" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Editing files - Sed</h1>
+<p>There are two main ways we can edit files:</p>
+<ul>
+<li><p>Interactively using tools like <code>nano</code> and <code>vim</code></p></li>
+<li><p>Non-interactively using tools like <code>sed</code></p></li>
+</ul>
+<p>Lets talk about <code>sed</code> first. This tool is most useful when incorporated into scripts as it can search for patterns and perform operations such as replacing the string, deleting the string and inserting characters before and after the string. The power in the tool lies in its ability to perform these operations at speed and scale. One of the most popular implementations of the <code>sed</code> tool is the substitute program. It follows the following syntax:</p>
+<ul>
+<li><code>sed [OPTIONS] 'command(s)' input_file(s)</code></li>
+</ul>
+<p>Common applications of <code>sed</code> include</p>
+<ul>
+<li><p>Substitute - This command can be used to replace patterns with new strings. The syntax for <code>sed</code> substitute is <code>sed 's/old_text/new_text/g' input_file</code></p></li>
+<li><p>Delete - This command can be used to delete patterns. The syntax for <code>sed</code> delete is <code>sed '/pattern/d' input_file</code></p></li>
+</ul>
+</section>
+<section id="editing-files---nano" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Editing files - Nano</h1>
+<p>We can also edit files interactively, much like you’d use word or notepad on a GUI-based interface. To get started, watch this short video on how to use nano:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/cLyUZAabf40" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<blockquote class="blockquote">
+<p><strong>Exercise 9:</strong></p>
+<p><strong>Let’s construct our first bash script using nano. Remember earlier we created a file called <code>script_1.sh</code></strong> <strong>in the src directory. Using nano:</strong></p>
+<ul>
+<li><p><strong>Open the file</strong></p></li>
+<li><p><strong>Type <code>#!/bin/bash</code>, this is what we call a shebang. This provides a path to the bash interpreter and should be at the top of all of your scripts.</strong></p></li>
+<li><p><strong>On a new line, write a line of code that uses <code>echo</code></strong> <strong>tool to print out “This is my first script in GNA5920”. If you are not familar with this tool, use the <code>man</code></strong> <strong>tool to review the manual.</strong></p></li>
+<li><p><strong>Save the script and execute it by typing <code>bash script_1.sh</code></strong> <strong>into the terminal. If you get a path error, you may need to use <code>cd</code></strong> <strong>to ensure you are in the right directory</strong></p></li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Exercise 10:</strong></p>
+<p><strong>Let’s now circle back to <code>sed</code>. Using <code>sed</code> substitute:</strong></p>
+<ul>
+<li><p><strong>Replace GNA5920 with Applied Bioinformatics</strong></p></li>
+<li><p><strong>Use the <code>&gt;</code> operator to save the output to a new file called <code>script_2.sh</code></strong></p></li>
+<li><p><strong>Execute the new script.</strong></p></li>
+</ul>
+</blockquote>
 
 
 </section>
