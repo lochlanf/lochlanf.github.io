@@ -108,16 +108,6 @@ ul.task-list li input[type="checkbox"] {
   <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -213,11 +203,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Navigating on the command line is an important skill and mastery of navigation will substantially reduce your time troubleshooting basic path related errors. Before we introduce the basic commands used for navigation it is important to introduce the concept of relative and absolute paths. Both can be used to specify the location of a directory or file but there is an important distinction between them.</p>
 <p><strong>Absolute Path</strong>: The absolute path of a file or directory begins at the root directory and specifies the full location of a file in the file system. This is the exact path from the root <code>/</code> to the file, and does not rely on the current working directory. Absolute pathways always begin with a forward slash <code>/</code>. Here is an example of an absolute path:</p>
 <ul>
-<li><code>/home/trainee32/shell-lesson-data</code></li>
+<li><code>/home/trainee32/GNA5920/week_1</code></li>
 </ul>
 <p><strong>Relative path:</strong> The relative path of a file begins at the current working directory and tracks the path from this directory to a given file. Relative paths do not begin with <code>/</code>. Image we are currently the <code>home</code> directory. The relative path to <code>shell-lesson-data</code> would be:</p>
 <ul>
-<li><code>trainee32/shell-lesson-data</code></li>
+<li><code>trainee32/GNA5920/week_1</code></li>
 </ul>
 <p><strong>When things go wrong:</strong> By far the most common error we see when navigating or pointing to a file occurs when the path to that file is set incorrectly. If this is the case you will see the following error: <code>No such file or directory</code>. If you see this error you need to double check the accuracy of the path you have provided.</p>
 <p>There are three key commands that we use for navigation.</p>
@@ -297,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 <p>We can create files and directories using the <code>touch</code> and <code>mkdir</code> commands. Touch will create an empty file and mkdir will create a new directory. Lets give it a try:</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 4:</strong></p>
-<p><strong>Within the week_1 directory, create a directory called “src”. Within this directory, create an empty file called script_1.sh</strong></p>
+<p><strong>Within the</strong> <code>~/GNA5920/week_1</code> <strong>directory, create a directory called “src”. Within this directory, create an empty file called script_1.sh</strong></p>
 </blockquote>
 </section>
 <section id="copying-moving-and-deleting-files" class="level1" data-number="6">
@@ -308,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <blockquote class="blockquote">
 <p><strong>Exercise 5:</strong></p>
-<p><strong>Within the week_1 directory, create a couple of files using the touch command. Explore the <code>cp</code> and <code>mv</code> commands by moving these files around and creating new copies. When you are done clean up the files you have created with <code>rm.</code></strong></p>
+<p><strong>Within the `</strong><code>GNA5920/week_1`</code> <strong>directory, create a couple of files using the touch command. Explore the <code>cp</code> and <code>mv</code> commands by moving these files around and creating new copies. When you are done clean up the files you have created with <code>rm.</code></strong></p>
 </blockquote>
 </section>
 <section id="wild-cards" class="level1" data-number="7">
@@ -361,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <blockquote class="blockquote">
 <p><strong>Exercise 6:</strong></p>
-<p><strong>Let’s try a few examples. In the <code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
+<p><strong>Let’s try a few examples. In the</strong> <code>~/GNA5920/week_1/</code><strong><code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
 </blockquote>
 </section>
 <section id="viewing-file-content" class="level1" data-number="8">
@@ -414,7 +404,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <blockquote class="blockquote">
 <p><strong>Exercise 7:</strong></p>
-<p><strong>In the <code>data/vcf</code> you will find a large variant call file (we will learn what the contents of this file mean in later weeks). Using the commands above, explore this file. What do you think the most effective way to navigate this file? !!!!!!ADD VCF File!!!!!</strong></p>
+<p><strong>In the</strong> <code>~/GNA5920/week_1/</code><strong><code>data/vcf</code> you will find a large variant call file (we will learn what the contents of this file mean in later weeks). Using the commands above, explore this file. What do you think the most effective way to navigate this file?</strong></p>
 </blockquote>
 </section>
 <section id="searching-file-content" class="level1" data-number="9">
@@ -422,10 +412,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Sometimes we will want to search and extract certain phrases from files. For this we can use the <code>grep</code> tool. <code>grep</code> will search for patterns in a file and return them to the terminal. The <code>grep</code> tool has several handy options including regular pattern matching, inverted search, and pattern counting. This is an important tool that you will use in several workflows, check out the manual to see all the relevant options.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 8:</strong></p>
-<p><strong>Earlier we counted the number of sequences in each fasta file in <code>data/sequence</code>. Now, using <code>grep</code> and the wildcards that you learned earlier:</strong></p>
+<p><strong>Earlier we counted the number of sequences in each fasta file in</strong> <code>~/GNA5920/week_1/</code><strong><code>data/sequence</code>. Now, using <code>grep</code> and the wildcards that you learned earlier:</strong></p>
 <ul>
 <li><p><strong>Search for all sequences in the fasta files containing the string <code>TTG</code>.</strong></p></li>
-<li><p><strong>Count the number of times <code>TTG</code> appears at least once in each sequence, in each fasta file</strong></p></li>
 <li><p><strong>Search for all sequences that don’t contain <code>TTG</code></strong></p></li>
 <li><p><strong>Search for all sequences that contain <code>AAA</code> in <code>sequence_1.fasta</code> to <code>sequence_5.fasta</code></strong></p></li>
 </ul>
@@ -442,18 +431,24 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><code>sed [OPTIONS] 'command(s)' input_file(s)</code></li>
 </ul>
-<p>Common applications of <code>sed</code> include</p>
+<p>The most common applications of <code>sed</code> is the substitute function</p>
 <ul>
-<li><p>Substitute - This command can be used to replace patterns with new strings. The syntax for <code>sed</code> substitute is <code>sed 's/old_text/new_text/g' input_file</code></p></li>
-<li><p>Delete - This command can be used to delete patterns. The syntax for <code>sed</code> delete is <code>sed '/pattern/d' input_file</code></p></li>
+<li>Substitute - This command can be used to replace patterns with new strings. The syntax for <code>sed</code> substitute is <code>sed 's/old_text/new_text/g' input_file</code></li>
 </ul>
+<blockquote class="blockquote">
+<p><strong>Exercise 9: Some genome reference builds contain the <code>chr</code> prefix to chromosomes, while others omit this information. The <code>vcf</code> file we have provided you contains the <code>chr</code> prefix. Using <code>sed</code> and other commands perform the following tasks:</strong></p>
+<ul>
+<li><p><strong>Identify the number of variants in this file (Hint: You might consider using the <code>grep</code> and <code>wc</code> tools.</strong></p></li>
+<li><p><strong>Using the <code>sed</code> tool, remove the <code>chr</code> prefix from both the header and the variant entries.</strong></p></li>
+</ul>
+</blockquote>
 </section>
 <section id="editing-files---nano" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Editing files - Nano</h1>
 <p>We can also edit files interactively, much like you’d use word or notepad on a GUI-based interface. To get started, watch this short video on how to use nano:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/cLyUZAabf40" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <blockquote class="blockquote">
-<p><strong>Exercise 9:</strong></p>
+<p><strong>Exercise 10:</strong></p>
 <p><strong>Let’s construct our first bash script using nano. Remember earlier we created a file called <code>script_1.sh</code></strong> <strong>in the src directory. Using nano:</strong></p>
 <ul>
 <li><p><strong>Open the file</strong></p></li>
@@ -463,7 +458,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Exercise 10:</strong></p>
+<p><strong>Exercise 11:</strong></p>
 <p><strong>Let’s now circle back to <code>sed</code>. Using <code>sed</code> substitute:</strong></p>
 <ul>
 <li><p><strong>Replace GNA5920 with Applied Bioinformatics</strong></p></li>
