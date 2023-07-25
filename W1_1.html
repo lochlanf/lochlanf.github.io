@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
     </ul>
@@ -137,20 +137,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#working-on-the-command-line" id="toc-working-on-the-command-line"><span class="toc-section-number">2</span>  Working on the command line</a></li>
-  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine"><span class="toc-section-number">3</span>  Connecting to your Virtual Machine</a></li>
-  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line"><span class="toc-section-number">4</span>  Navigating on the command line</a></li>
-  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">5</span>  Creating files and directories</a></li>
-  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">6</span>  Copying, moving and deleting files</a></li>
-  <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">7</span>  Wild cards</a></li>
-  <li><a href="#viewing-file-content" id="toc-viewing-file-content"><span class="toc-section-number">8</span>  Viewing file content</a></li>
-  <li><a href="#searching-file-content" id="toc-searching-file-content"><span class="toc-section-number">9</span>  Searching file content</a></li>
-  <li><a href="#editing-files---sed" id="toc-editing-files---sed"><span class="toc-section-number">10</span>  Editing files - Sed</a></li>
-  <li><a href="#editing-files---nano" id="toc-editing-files---nano"><span class="toc-section-number">11</span>  Editing files - Nano</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">1.1</span>  Learning Objectives</a></li>
+  <li><a href="#working-on-the-command-line" id="toc-working-on-the-command-line"><span class="toc-section-number">1.2</span>  Working on the command line</a></li>
+  <li><a href="#connecting-to-your-virtual-machine" id="toc-connecting-to-your-virtual-machine"><span class="toc-section-number">1.3</span>  Connecting to your Virtual Machine</a></li>
+  <li><a href="#navigating-on-the-command-line" id="toc-navigating-on-the-command-line"><span class="toc-section-number">1.4</span>  Navigating on the command line</a></li>
+  <li><a href="#creating-files-and-directories" id="toc-creating-files-and-directories"><span class="toc-section-number">1.5</span>  Creating files and directories</a></li>
+  <li><a href="#copying-moving-and-deleting-files" id="toc-copying-moving-and-deleting-files"><span class="toc-section-number">1.6</span>  Copying, moving and deleting files</a></li>
+  <li><a href="#wild-cards" id="toc-wild-cards"><span class="toc-section-number">1.7</span>  Wild cards</a></li>
+  <li><a href="#viewing-file-content" id="toc-viewing-file-content"><span class="toc-section-number">1.8</span>  Viewing file content</a></li>
+  <li><a href="#searching-file-content" id="toc-searching-file-content"><span class="toc-section-number">1.9</span>  Searching file content</a></li>
+  <li><a href="#editing-files---sed" id="toc-editing-files---sed"><span class="toc-section-number">1.10</span>  Editing files - Sed</a></li>
+  <li><a href="#editing-files---nano" id="toc-editing-files---nano"><span class="toc-section-number">1.11</span>  Editing files - Nano</a></li>
   </ul>
 </nav>
-<section id="working-on-the-command-line" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Working on the command line</h1>
+<section id="learning-objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">1.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>To compare and contrast command line interfaces with graphical user interfaces</p></li>
+<li><p>To articulate the principles of Bash programming, including the common syntax of commands</p></li>
+<li><p>To execute common commands to solve routine problems using Bash</p></li>
+</ul>
+</section>
+<section id="working-on-the-command-line" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="working-on-the-command-line"><span class="header-section-number">1.2</span> Working on the command line</h2>
 <p>Bioinformatic analysis is conducted using a command-line interface (CLI). This is a text-based interface that allows users to interact directly with the computers operating system by executing commands. This is in contrast with the graphical user interface (GUI) that you might be familiar with, where instructions are sent to the computer via a point-aim-click mechanism. Below is an example of how one might view the contents of a directory using a CLI (Left) and a GUI (Right). The most common shells are Bash and Zsh. These shells typically operate in Unix based operating systems. We will be using Ubuntu-based virtual machines in this course.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -165,8 +175,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Efficiency - Graphical user interfaces can be resource intensive. Using the shell frees resources that would usually be used for the GUI.</p></li>
 </ul>
 </section>
-<section id="connecting-to-your-virtual-machine" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Connecting to your Virtual Machine</h1>
+<section id="connecting-to-your-virtual-machine" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="connecting-to-your-virtual-machine"><span class="header-section-number">1.3</span> Connecting to your Virtual Machine</h2>
 <p>There are several important steps to connect to your virtual machine.</p>
 <p><strong>Mac OSX/Linux based computers</strong></p>
 <ol type="1">
@@ -198,16 +208,16 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <p><img src="images/Screenshot 2023-07-17 at 1.58.11 pm.png" class="img-fluid"></p>
 </section>
-<section id="navigating-on-the-command-line" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Navigating on the command line</h1>
+<section id="navigating-on-the-command-line" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="navigating-on-the-command-line"><span class="header-section-number">1.4</span> Navigating on the command line</h2>
 <p>Navigating on the command line is an important skill and mastery of navigation will substantially reduce your time troubleshooting basic path related errors. Before we introduce the basic commands used for navigation it is important to introduce the concept of relative and absolute paths. Both can be used to specify the location of a directory or file but there is an important distinction between them.</p>
 <p><strong>Absolute Path</strong>: The absolute path of a file or directory begins at the root directory and specifies the full location of a file in the file system. This is the exact path from the root <code>/</code> to the file, and does not rely on the current working directory. Absolute pathways always begin with a forward slash <code>/</code>. Here is an example of an absolute path:</p>
 <ul>
-<li><code>/home/trainee32/GNA5920/week_1</code></li>
+<li><code>/home/trainee32/GNA5012/week_1</code></li>
 </ul>
 <p><strong>Relative path:</strong> The relative path of a file begins at the current working directory and tracks the path from this directory to a given file. Relative paths do not begin with <code>/</code>. Image we are currently the <code>home</code> directory. The relative path to <code>shell-lesson-data</code> would be:</p>
 <ul>
-<li><code>trainee32/GNA5920/week_1</code></li>
+<li><code>trainee32/GNA5012/week_1</code></li>
 </ul>
 <p><strong>When things go wrong:</strong> By far the most common error we see when navigating or pointing to a file occurs when the path to that file is set incorrectly. If this is the case you will see the following error: <code>No such file or directory</code>. If you see this error you need to double check the accuracy of the path you have provided.</p>
 <p>There are three key commands that we use for navigation.</p>
@@ -282,27 +292,27 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Use the <code>ls</code> command to list the contents of the week_1 directory. There are several options associated with this command. You can view these (and options associated with any other command) using the man command. Try out a few, especially the -a option. What do you notice?</strong></p>
 </blockquote>
 </section>
-<section id="creating-files-and-directories" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Creating files and directories</h1>
+<section id="creating-files-and-directories" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="creating-files-and-directories"><span class="header-section-number">1.5</span> Creating files and directories</h2>
 <p>We can create files and directories using the <code>touch</code> and <code>mkdir</code> commands. Touch will create an empty file and mkdir will create a new directory. Lets give it a try:</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 4:</strong></p>
-<p><strong>Within the</strong> <code>~/GNA5920/week_1</code> <strong>directory, create a directory called “src”. Within this directory, create an empty file called script_1.sh</strong></p>
+<p><strong>Within the</strong> <code>~/GNA5012/week_1</code> <strong>directory, create a directory called “src”. Within this directory, create an empty file called script_1.sh</strong></p>
 </blockquote>
 </section>
-<section id="copying-moving-and-deleting-files" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Copying, moving and deleting files</h1>
+<section id="copying-moving-and-deleting-files" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="copying-moving-and-deleting-files"><span class="header-section-number">1.6</span> Copying, moving and deleting files</h2>
 <p>There are occasions when we want to copy, move or even delete files from the shell. This can be achieved using the <code>cp</code>, <code>mv</code> and <code>rm</code> functions, respectively.</p>
 <ul>
 <li>The basic syntax for <code>cp</code> and <code>mv</code> is as follows: <code>cp source_file target_file</code></li>
 </ul>
 <blockquote class="blockquote">
 <p><strong>Exercise 5:</strong></p>
-<p><strong>Within the `</strong><code>GNA5920/week_1`</code> <strong>directory, create a couple of files using the touch command. Explore the <code>cp</code> and <code>mv</code> commands by moving these files around and creating new copies. When you are done clean up the files you have created with <code>rm.</code></strong></p>
+<p><strong>Within the `</strong><code>~/GNA5012/week_1`</code> <strong>directory, create a couple of files using the touch command. Explore the <code>cp</code> and <code>mv</code> commands by moving these files around and creating new copies. When you are done clean up the files you have created with <code>rm.</code></strong></p>
 </blockquote>
 </section>
-<section id="wild-cards" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Wild cards</h1>
+<section id="wild-cards" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="wild-cards"><span class="header-section-number">1.7</span> Wild cards</h2>
 <p>Sometimes when we are performing tasks in bash we would like to identify patterns in text strings. For instance, I might have a large set of fastq files from a paired-end sequencing run. Read pairs are usually denoted by R1 and R2. I can use wild cards to identify all the R1 fastq files in a directory in a directory by using the following command</p>
 <p><code>ls *R1.fastq</code></p>
 <p>There are several wildcards in Bash:</p>
@@ -351,11 +361,11 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <blockquote class="blockquote">
 <p><strong>Exercise 6:</strong></p>
-<p><strong>Let’s try a few examples. In the</strong> <code>~/GNA5920/week_1/</code><strong><code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
+<p><strong>Let’s try a few examples. In the</strong> <code>~/GNA5012/week_1/</code><strong><code>data/sequences</code></strong> <strong>you will find a set of DNA sequences in FASTA format. Each file contains a different number of sequences. FASTA files contain a descriptor line, which is indicated by the <code>&gt;</code></strong> <strong>symbol, and a line containing the sequence of nucleotides. We can use the <code>wc</code> tool to evaluate the number of lines in a file. Use the <code>wc</code></strong> <strong>tool and wild-card expressions to determine the number of sequences in each file. (Hint - if you are unsure about <code>wc</code></strong>, <strong>check out the manual using <code>man wc</code></strong></p>
 </blockquote>
 </section>
-<section id="viewing-file-content" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Viewing file content</h1>
+<section id="viewing-file-content" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="viewing-file-content"><span class="header-section-number">1.8</span> Viewing file content</h2>
 <p>There are several ways we can work with the contents of files in Bash. To view files we can leverage a suite of in-built tools, including <code>cat</code>, <code>less</code>, <code>head</code> and <code>tail</code></p>
 <table class="table">
 <colgroup>
@@ -404,15 +414,15 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <blockquote class="blockquote">
 <p><strong>Exercise 7:</strong></p>
-<p><strong>In the</strong> <code>~/GNA5920/week_1/</code><strong><code>data/vcf</code> you will find a large variant call file (we will learn what the contents of this file mean in later weeks). Using the commands above, explore this file. What do you think the most effective way to navigate this file?</strong></p>
+<p><strong>In the</strong> <code>~/GNA5012/week_1/</code><strong><code>data/vcf</code> you will find a large variant call file (we will learn what the contents of this file mean in later weeks). Using the commands above, explore this file. What do you think the most effective way to navigate this file?</strong></p>
 </blockquote>
 </section>
-<section id="searching-file-content" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Searching file content</h1>
+<section id="searching-file-content" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="searching-file-content"><span class="header-section-number">1.9</span> Searching file content</h2>
 <p>Sometimes we will want to search and extract certain phrases from files. For this we can use the <code>grep</code> tool. <code>grep</code> will search for patterns in a file and return them to the terminal. The <code>grep</code> tool has several handy options including regular pattern matching, inverted search, and pattern counting. This is an important tool that you will use in several workflows, check out the manual to see all the relevant options.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 8:</strong></p>
-<p><strong>Earlier we counted the number of sequences in each fasta file in</strong> <code>~/GNA5920/week_1/</code><strong><code>data/sequence</code>. Now, using <code>grep</code> and the wildcards that you learned earlier:</strong></p>
+<p><strong>Earlier we counted the number of sequences in each fasta file in</strong> <code>~/GNA5012/week_1/</code><strong><code>data/sequence</code>. Now, using <code>grep</code> and the wildcards that you learned earlier:</strong></p>
 <ul>
 <li><p><strong>Search for all sequences in the fasta files containing the string <code>TTG</code>.</strong></p></li>
 <li><p><strong>Search for all sequences that don’t contain <code>TTG</code></strong></p></li>
@@ -420,8 +430,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </blockquote>
 </section>
-<section id="editing-files---sed" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Editing files - Sed</h1>
+<section id="editing-files---sed" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="editing-files---sed"><span class="header-section-number">1.10</span> Editing files - Sed</h2>
 <p>There are two main ways we can edit files:</p>
 <ul>
 <li><p>Interactively using tools like <code>nano</code> and <code>vim</code></p></li>
@@ -443,8 +453,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </blockquote>
 </section>
-<section id="editing-files---nano" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Editing files - Nano</h1>
+<section id="editing-files---nano" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="editing-files---nano"><span class="header-section-number">1.11</span> Editing files - Nano</h2>
 <p>We can also edit files interactively, much like you’d use word or notepad on a GUI-based interface. To get started, watch this short video on how to use nano:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/cLyUZAabf40" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <blockquote class="blockquote">
@@ -453,7 +463,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p><strong>Open the file</strong></p></li>
 <li><p><strong>Type <code>#!/bin/bash</code>, this is what we call a shebang. This provides a path to the bash interpreter and should be at the top of all of your scripts.</strong></p></li>
-<li><p><strong>On a new line, write a line of code that uses <code>echo</code></strong> <strong>tool to print out “This is my first script in GNA5920”. If you are not familar with this tool, use the <code>man</code></strong> <strong>tool to review the manual.</strong></p></li>
+<li><p><strong>On a new line, write a line of code that uses <code>echo</code></strong> <strong>tool to print out “This is my first script in GNA5012”. If you are not familar with this tool, use the <code>man</code></strong> <strong>tool to review the manual.</strong></p></li>
 <li><p><strong>Save the script and execute it by typing <code>bash script_1.sh</code></strong> <strong>into the terminal. If you get a path error, you may need to use <code>cd</code></strong> <strong>to ensure you are in the right directory</strong></p></li>
 </ul>
 </blockquote>
@@ -461,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Exercise 11:</strong></p>
 <p><strong>Let’s now circle back to <code>sed</code>. Using <code>sed</code> substitute:</strong></p>
 <ul>
-<li><p><strong>Replace GNA5920 with Applied Bioinformatics</strong></p></li>
+<li><p><strong>Replace GNA5012 with Applied Bioinformatics</strong></p></li>
 <li><p><strong>Use the <code>&gt;</code> operator to save the output to a new file called <code>script_2.sh</code></strong></p></li>
 <li><p><strong>Execute the new script.</strong></p></li>
 </ul>
@@ -612,7 +622,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./W1_2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

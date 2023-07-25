@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 2&nbsp; Week 1 Workshop B - Introduction to the shell</title>
+<title>GNA5012 - Applied Bioinformatics - 2&nbsp; Week 1 Workshop B - Introduction shell scripting and pipelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -104,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
     </ul>
@@ -118,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction to the shell</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
 </div>
 
 
@@ -132,10 +132,34 @@ ul.task-list li input[type="checkbox"] {
   
 
 </header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">2.1</span>  Learning Objectives</a></li>
+  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.2</span>  Redirects and pipes</a></li>
+  </ul>
+</nav>
+<p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
+<section id="learning-objectives" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">2.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>To combine a series of commands to manipulate common files and save the corresponding outputs using pipes and redirects</p></li>
+<li><p>To construct and execute Bash scripts to solve multi-step programming problems</p></li>
+<li><p>To formulate basic loops to execute a series of commands over multiple files</p></li>
+</ul>
+</section>
+<section id="redirects-and-pipes" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.2</span> Redirects and pipes</h2>
+<p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator. Here is an example of how we might use perform the task outlined above using pipes:</p>
+<p><code>grep -v '#' HG002.vcf | grep 'chr1' | wc -l</code></p>
+<blockquote class="blockquote">
+<p><strong>Exercise 1: At your table discuss what is occurring at each step of this pipeline. Explain the logic behind these steps.</strong></p>
+</blockquote>
 
-<p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions. In preparation for this workshop, please continue to familiarise yourself with nano and the tools that we have introduced so far. This page will be updated with workshop content on Thursday evening.</p>
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
