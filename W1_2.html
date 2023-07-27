@@ -200,10 +200,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">2.1</span>  Learning Objectives</a></li>
-  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.2</span>  Redirects and pipes</a></li>
-  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.3</span>  Constructing basic FOR loops</a></li>
-  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.4</span>  Constructing basic WHILE loops</a></li>
-  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.5</span>  Common file types in Bioinformatics</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">2.2</span>  Workshop setup</a></li>
+  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.3</span>  Redirects and pipes</a></li>
+  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.4</span>  Constructing basic FOR loops</a></li>
+  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.5</span>  Constructing basic WHILE loops</a></li>
+  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.6</span>  Common file types in Bioinformatics</a></li>
   </ul>
 </nav>
 <p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
@@ -216,8 +217,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>To formulate basic loops to execute a series of commands over multiple files</p></li>
 </ul>
 </section>
-<section id="redirects-and-pipes" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.2</span> Redirects and pipes</h2>
+<section id="workshop-setup" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">2.2</span> Workshop setup</h2>
+<p>To download today’s workshop data enter the following commands</p>
+<ul>
+<li><p><code>cd ~/GNA5012/week_1/data/</code></p></li>
+<li><p><code>wget workshop_2.tar.gz</code></p></li>
+<li><p><code>tar -xf workshop_2.tar.gz</code></p></li>
+</ul>
+</section>
+<section id="redirects-and-pipes" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.3</span> Redirects and pipes</h2>
 <p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator (SHIFT+\ on most keyboards). Here is an example of how we might use perform the task outlined above using pipes:</p>
 <p><code>grep -v '#' HG002.vcf | grep 'chr1' | wc -l</code></p>
 <blockquote class="blockquote">
@@ -285,8 +295,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </section>
-<section id="constructing-basic-for-loops" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">2.3</span> Constructing basic FOR loops</h2>
+<section id="constructing-basic-for-loops" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">2.4</span> Constructing basic FOR loops</h2>
 <p>Loops are essential constructs that allow us to repeat tasks efficiently, making them fundamental tools in automating repetitive tasks. In bioinformatics this might mean trimming reads from multiple samples or calling variants across different patients. The most basic bash loop is the FOR loop.</p>
 <p>A “FOR” loop is a loop used in programming and scripting languages to repeatedly execute a block of code based on a defined sequence of values or a list of items. In the context of bash scripting, the “FOR” loop is a construct that allows you to perform a specific action for each item in a list, array, or a specified range of values. Here is an example of a FOR loop</p>
 <div class="cell">
@@ -327,8 +337,8 @@ This is iteration number 5</code></pre>
 
 </div>
 </section>
-<section id="constructing-basic-while-loops" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.4</span> Constructing basic WHILE loops</h2>
+<section id="constructing-basic-while-loops" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.5</span> Constructing basic WHILE loops</h2>
 <p>The second type of loop that we can employ in bash is the WHILE loop. The <strong><code>while</code></strong> loop is used when you want to repeat a block of code while a certain condition is true. We can use <code>while</code> loops in combination with the <code>read</code> function to construct powerful loops. These loops read each line of a file and continue until there are no lines remaining. For these loops to work we must provide an input file via the standard input stream. Here is an example:</p>
 <p>Suppose we have an input text file that contains the states of Australia, each on a new line. We can use a <code>while read</code> loop to print each of these lines to the terminal using the following code:</p>
 <div class="cell">
@@ -359,8 +369,8 @@ Western Australia</code></pre>
 
 </div>
 </section>
-<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.5</span> Common file types in Bioinformatics</h2>
+<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.6</span> Common file types in Bioinformatics</h2>
 <p>Next week we will be learning about common file types in bioinformatics. For the remainder of the workshop, work in groups of 3-4 to construct a fact sheet that outlines and describes the format of one of the following file types. Include a list of tools that are commonly used to manipulate these file types. Your fact sheet should be comprehensive and provide an overview of the file type and its contents. Make your fact sheet easy to digest and visually appealing. You will have an opportunity to update these fact sheets in the first half of next weeks workshop, we will then share these among the class.</p>
 <p>File types</p>
 <ul>
