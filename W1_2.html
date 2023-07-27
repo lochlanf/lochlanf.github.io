@@ -204,7 +204,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.3</span>  Redirects and pipes</a></li>
   <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.4</span>  Constructing basic FOR loops</a></li>
   <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.5</span>  Constructing basic WHILE loops</a></li>
-  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.6</span>  Common file types in Bioinformatics</a></li>
+  <li><a href="#setting-variables" id="toc-setting-variables"><span class="toc-section-number">2.6</span>  Setting variables</a></li>
+  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.7</span>  Common file types in Bioinformatics</a></li>
   </ul>
 </nav>
 <p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
@@ -222,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To download today’s workshop data enter the following commands</p>
 <ul>
 <li><p><code>cd ~/GNA5012/week_1/data/</code></p></li>
-<li><p><code>wget workshop_2.tar.gz</code></p></li>
+<li><p><code>wget http://lochlanf.github.io/workshop_2.tar.gz</code></p></li>
 <li><p><code>tar -xf workshop_2.tar.gz</code></p></li>
 </ul>
 </section>
@@ -236,10 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Redirects are use to pass information to and from bash streams. Each program deals with streams differently and has default behaviour, however this can be modified using redirects. Lets recap what the standard bash streams are:</p>
 <table class="table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 50%">
-<col style="width: 16%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 42%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -369,8 +370,56 @@ Western Australia</code></pre>
 
 </div>
 </section>
-<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.6</span> Common file types in Bioinformatics</h2>
+<section id="setting-variables" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="setting-variables"><span class="header-section-number">2.6</span> Setting variables</h2>
+<p>In bash we can assign values to variables. Bash variables are used to store data, such as text strings or numbers, within a Bash script or in the command line. They provide a way to reference and manipulate data as the script or command runs. Variables are very useful as they allow us to assign a string (such as a directory) to a variable and avoid typing it multiple times when writing a script. Here is an example of how we assign and access variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">variable1</span><span class="op">=</span><span class="st">"My First Variable"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$variable1</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${variable1}</span>_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My First Variable
+My First Variable_text</code></pre>
+</div>
+</div>
+<p>In this example, I have assigned the string <code>My First Variable</code> to <code>variable1</code>. I can then access that variable using the <code>$</code> operator. The curly braces on the third line allow us to access the variable and separate it from pre- and suffix text.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 5: Creating and using variables.</strong></p>
+<ul>
+<li><p>Create a new directory called <code>results</code> in the <code>week_1</code> directory.</p></li>
+<li><p>In the <code>src</code> directory, create a new script called <code>variables.sh</code></p></li>
+<li><p>In your script set two variables: <code>results</code> and <code>data</code> pointing to the absolute path of both of these directories</p></li>
+<li><p>Use the echo command to call these variables and print them out</p></li>
+<li><p>Execute your script</p></li>
+</ul>
+</blockquote>
+<p>We can also use command line arguments to set variables that are provided when executing a script. These are indexed according to the position of the argument. For example, consider the following script called <code>course.sh</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The title of this course is </span><span class="va">${1}</span><span class="st">"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The code for this course is </span><span class="va">${2}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When executing the script, we can pass information to <code>$1</code> and <code>$2</code> by providing additional arguments:</p>
+<p><code>bash course.sh Applied_Bioinformatics GNA5012</code></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>The title of this course is Applied_Bioinformatics
+The code for this course is GNA5012</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise 6: Creating and using variables provided as arguments</strong></p>
+<ul>
+<li><p>In the <code>src</code> directory, create a new script called <code>variables_2.sh</code></p></li>
+<li><p>Write a script that uses command line argument to set results and data variables</p></li>
+<li><p>Use the echo command to call these variables and print them out</p></li>
+<li><p>Execute your script</p></li>
+</ul>
+</blockquote>
+</section>
+<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.7</span> Common file types in Bioinformatics</h2>
 <p>Next week we will be learning about common file types in bioinformatics. For the remainder of the workshop, work in groups of 3-4 to construct a fact sheet that outlines and describes the format of one of the following file types. Include a list of tools that are commonly used to manipulate these file types. Your fact sheet should be comprehensive and provide an overview of the file type and its contents. Make your fact sheet easy to digest and visually appealing. You will have an opportunity to update these fact sheets in the first half of next weeks workshop, we will then share these among the class.</p>
 <p>File types</p>
 <ul>
