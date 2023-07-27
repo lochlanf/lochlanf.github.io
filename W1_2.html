@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -138,6 +201,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">2.1</span>  Learning Objectives</a></li>
   <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.2</span>  Redirects and pipes</a></li>
+  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.3</span>  Constructing basic FOR loops</a></li>
+  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.4</span>  Constructing basic WHILE loops</a></li>
+  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.5</span>  Common file types in Bioinformatics</a></li>
   </ul>
 </nav>
 <p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
@@ -152,11 +218,159 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="redirects-and-pipes" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.2</span> Redirects and pipes</h2>
-<p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator. Here is an example of how we might use perform the task outlined above using pipes:</p>
+<p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator (SHIFT+\ on most keyboards). Here is an example of how we might use perform the task outlined above using pipes:</p>
 <p><code>grep -v '#' HG002.vcf | grep 'chr1' | wc -l</code></p>
 <blockquote class="blockquote">
 <p><strong>Exercise 1: At your table discuss what is occurring at each step of this pipeline. Explain the logic behind these steps.</strong></p>
 </blockquote>
+<p>Redirects are use to pass information to and from bash streams. Each program deals with streams differently and has default behaviour, however this can be modified using redirects. Lets recap what the standard bash streams are:</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 50%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Input stream</th>
+<th>File Descriptor</th>
+<th>Explanation</th>
+<th>Redirect operator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Standard Input (stdin)</td>
+<td>0</td>
+<td>This stream the provides input to a program. Data can be passed to stdin by typing into the terminal or by redirecting a file/text.</td>
+<td><code>&lt;</code></td>
+</tr>
+<tr class="even">
+<td>Standard Output (stdout)</td>
+<td>1</td>
+<td>This is the stream to which output data from a program is written. This stream can return the output data to the terminal (ls, cat etc), write it to a file (many bioinformatics tools with output options) or be silent (ie. mv, cp etc) depending on the program.</td>
+<td><code>&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Standard Error (stderr)</td>
+<td>2</td>
+<td>This is the error stream. Programs pass error messages to this stream.</td>
+<td><code>2&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>As outlined above, the default behaviour of a program with respect to streams can be changed. We can use the redirect operators to pass information to a command (stdin, <code>&lt;</code>), write information to a file (via redirecting stdout <code>&gt;</code>), pass the output of a command to a subsequent program (piping, <code>|</code>), and write errors to a log (redirecting stderr, <code>&gt;&amp;</code>).</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 2: Lets practice using redirects and pipes.</strong></p>
+<ul>
+<li><p>In <code>week_1/data/workshop_2</code> you will find a file called <code>animals.csv</code>. Use the one of the viewing functions we learned last week to take a peek at this file. Our task is to search for entries containing the string rabbit and sort the output by the third column. This corresponds to the number of rabbits observed on that date.</p>
+<ul>
+<li><p>You will need to use two commands, with standard output of the first piped to the second command. (Hint: The second command will be <code>sort</code>. You will need to provide a few options for this to work successfully.) Review the manual to gain some insight into the options of <code>sort</code>.</p></li>
+<li><p>On what date was the least number of rabbits observed?</p></li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li><p>Now lets try an example using the vcf file in the <code>week_1/data/vcf</code> directory. Lets imagine that we are only interested in T&gt;C single nucleotide substitutions:</p>
+<ul>
+<li><p>Construct a pipeline that will remove the header from the vcf file, subset variants with a T reference allele and C alternative allele, and counts the number of variants.</p></li>
+<li><p>Redirect the output to a file called <code>T_to_C_cts.txt</code></p></li>
+<li><p>Note: You will need to use the <code>awk</code> command to achieve this. Here is an example of an awk command that will return entries with the string <code>hello</code> in the fourth column from a file called <code>example.txt</code>: <code>awk '$4 =="hello"' example.txt</code> . The <code>$4</code> indicates the fourth column. Check out the manual for awk for more details.</p></li>
+</ul></li>
+</ul>
+</blockquote>
+<div class="cell">
+
+</div>
+</section>
+<section id="constructing-basic-for-loops" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">2.3</span> Constructing basic FOR loops</h2>
+<p>Loops are essential constructs that allow us to repeat tasks efficiently, making them fundamental tools in automating repetitive tasks. In bioinformatics this might mean trimming reads from multiple samples or calling variants across different patients. The most basic bash loop is the FOR loop.</p>
+<p>A “FOR” loop is a loop used in programming and scripting languages to repeatedly execute a block of code based on a defined sequence of values or a list of items. In the context of bash scripting, the “FOR” loop is a construct that allows you to perform a specific action for each item in a list, array, or a specified range of values. Here is an example of a FOR loop</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> 1 2 3 4 5 </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is iteration number </span><span class="va">$i</span><span class="st">"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is iteration number 1
+This is iteration number 2
+This is iteration number 3
+This is iteration number 4
+This is iteration number 5</code></pre>
+</div>
+</div>
+<p>Lets deconstruct this loop.</p>
+<ul>
+<li><p>First we are assign values 1 to 5 to the variable <code>i</code>. This is done iteratively (ie. first <code>i=1</code>, the body of the loop is ran, and then <code>i=2</code>).</p></li>
+<li><p><code>do</code> instructs the bash interpreter to complete all commands listed in the body of the loop.</p></li>
+<li><p>The body of the loop is comprise of any number of commands, in this case we are just running the <code>echo</code> program.</p></li>
+<li><p><code>done</code> tells the interpreter that the loop is complete.</p></li>
+<li><p>This process repeats until all items in the list have been iterated over.</p></li>
+</ul>
+<p>Loops are best constructed in scripts. Last workshop we created a basic script to print out text into the terminal. Lets have a go at creating another script, but this time our script will contain a FOR loop.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 3: FOR loops</strong></p>
+<ul>
+<li><p>Last workshop we created a directory called <code>src</code> within <code>week_1</code>. Using <code>cd</code> navigate to this directory and create a new script called <code>my_first_loop.sh</code> using <code>nano</code></p></li>
+<li><p>Create a FOR loop that will find the pattern <code>CCC</code> in the <code>.dat</code> files in the creatures directory in <code>week_1/data/workshop_2</code></p></li>
+<li><p>Save the output to a file called CCC_Creatures.txt. Make sure you append the sequences for each creature to this file, with the sequences separated by the file name.</p></li>
+<li><p>Hint: You will need to use <code>echo</code>, <code>grep</code>, redirects (specifically the <code>&gt;&gt;</code> redirect), wildcards and variables for this exercise.</p></li>
+</ul>
+</blockquote>
+<div class="cell">
+
+</div>
+</section>
+<section id="constructing-basic-while-loops" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.4</span> Constructing basic WHILE loops</h2>
+<p>The second type of loop that we can employ in bash is the WHILE loop. The <strong><code>while</code></strong> loop is used when you want to repeat a block of code while a certain condition is true. We can use <code>while</code> loops in combination with the <code>read</code> function to construct powerful loops. These loops read each line of a file and continue until there are no lines remaining. For these loops to work we must provide an input file via the standard input stream. Here is an example:</p>
+<p>Suppose we have an input text file that contains the states of Australia, each on a new line. We can use a <code>while read</code> loop to print each of these lines to the terminal using the following code:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">states</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${states}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Victoria
+New South Wales
+Tasmania
+Queensland
+South Australia
+Western Australia</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise 4: Constructing a basic WHILE read loop</strong></p>
+<ul>
+<li><p>In the <code>week_1/data/workshop_2/sequences</code> directory you will find some fastq files. Using <code>ls</code>, <code>grep</code>, <code>sed</code> and redirects, create a text file called <code>samples.txt</code> that contains the sample name without the <code>.fastq</code> suffix</p></li>
+<li><p>Use a <code>while read</code> loop to search for the headers in each sequence (indicated by the <code>@</code> symbol) and redirect them to a new file which has a file name format of sample_sequence_headers.txt</p></li>
+</ul>
+</blockquote>
+<div class="cell">
+
+</div>
+</section>
+<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.5</span> Common file types in Bioinformatics</h2>
+<p>Next week we will be learning about common file types in bioinformatics. For the remainder of the workshop, work in groups of 3-4 to construct a fact sheet that outlines and describes the format of one of the following file types. Include a list of tools that are commonly used to manipulate these file types. Your fact sheet should be comprehensive and provide an overview of the file type and its contents. Make your fact sheet easy to digest and visually appealing. You will have an opportunity to update these fact sheets in the first half of next weeks workshop, we will then share these among the class.</p>
+<p>File types</p>
+<ul>
+<li><p><code>.fasta</code></p></li>
+<li><p><code>.fastq</code></p></li>
+<li><p><code>.sam</code></p></li>
+<li><p><code>.vcf</code></p></li>
+<li><p><code>.gtf</code></p></li>
+<li><p><code>.bed</code></p></li>
+</ul>
 
 
 </section>
