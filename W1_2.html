@@ -93,6 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./W2_1.html" rel="next">
 <link href="./W1_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -170,6 +171,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -205,7 +211,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.4</span>  Constructing basic FOR loops</a></li>
   <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.5</span>  Constructing basic WHILE loops</a></li>
   <li><a href="#setting-variables" id="toc-setting-variables"><span class="toc-section-number">2.6</span>  Setting variables</a></li>
-  <li><a href="#common-file-types-in-bioinformatics" id="toc-common-file-types-in-bioinformatics"><span class="toc-section-number">2.7</span>  Common file types in Bioinformatics</a></li>
   </ul>
 </nav>
 <p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
@@ -347,6 +352,14 @@ This is iteration number 5</code></pre>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'CCC'</span> <span class="va">$file</span> <span class="op">&gt;&gt;</span> CCC_Creatures.txt</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> samples.txt </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">samples</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'@'</span> <span class="va">${samples}</span>.fastq <span class="op">&gt;</span> <span class="va">${samples}</span>_sequence_headers.txt</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="constructing-basic-while-loops" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.5</span> Constructing basic WHILE loops</h2>
@@ -356,10 +369,10 @@ This is iteration number 5</code></pre>
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">states</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${states}</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">states</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${states}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Victoria
 New South Wales
@@ -378,26 +391,26 @@ Western Australia</code></pre>
 </blockquote>
 <p><strong>Solution:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">##Make the sample file. First list all files, then search for files containing the fastq string, then remove the file extension</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> samples.txt </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">## While read loop. Assigns each line in samples.txt file to the samples variable. The loop will continue until there are no more lines in the sample file to read.</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">samples</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'@'</span> <span class="va">${samples}</span>.fastq <span class="op">&gt;</span> <span class="va">${samples}</span>_sequence_headers.txt</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">##Make the sample file. First list all files, then search for files containing the fastq string, then remove the file extension</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> samples.txt </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">## While read loop. Assigns each line in samples.txt file to the samples variable. The loop will continue until there are no more lines in the sample file to read.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">samples</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'@'</span> <span class="va">${samples}</span>.fastq <span class="op">&gt;</span> <span class="va">${samples}</span>_sequence_headers.txt</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="setting-variables" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="setting-variables"><span class="header-section-number">2.6</span> Setting variables</h2>
 <p>In bash we can assign values to variables. Bash variables are used to store data, such as text strings or numbers, within a Bash script or in the command line. They provide a way to reference and manipulate data as the script or command runs. Variables are very useful as they allow us to assign a string (such as a directory) to a variable and avoid typing it multiple times when writing a script. Here is an example of how we assign and access variables:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">variable1</span><span class="op">=</span><span class="st">"My First Variable"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$variable1</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${variable1}</span>_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">variable1</span><span class="op">=</span><span class="st">"My First Variable"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$variable1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${variable1}</span>_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>My First Variable
 My First Variable_text</code></pre>
@@ -416,13 +429,17 @@ My First Variable_text</code></pre>
 </blockquote>
 <p><strong>Solution:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="va">results</span><span class="op">=</span><span class="st">"/home/trainee42/GNA5012/week_1/results"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="va">data</span><span class="op">=</span><span class="st">"/home/trainee42/GNA5012/week_1/data"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${results}</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${data}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also use command line arguments to set variables that are provided when executing a script. These are indexed according to the position of the argument. For example, consider the following script called <code>course.sh</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The title of this course is </span><span class="va">${1}</span><span class="st">"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The code for this course is </span><span class="va">${2}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The title of this course is </span><span class="va">${1}</span><span class="st">"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The code for this course is </span><span class="va">${2}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When executing the script, we can pass information to <code>$1</code> and <code>$2</code> by providing additional arguments:</p>
 <p><code>bash course.sh Applied_Bioinformatics GNA5012</code></p>
@@ -443,26 +460,13 @@ The code for this course is GNA5012</code></pre>
 </blockquote>
 <p><strong>Solution:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Command usage: bash variables_2.sh RESULTS DATA</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="va">results</span><span class="op">=</span><span class="va">${1}</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="va">data</span><span class="op">=</span><span class="va">${2}</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${results}</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${data}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Command usage: bash variables_2.sh RESULTS DATA</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="va">results</span><span class="op">=</span><span class="va">${1}</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="va">data</span><span class="op">=</span><span class="va">${2}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${results}</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${data}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="common-file-types-in-bioinformatics" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="common-file-types-in-bioinformatics"><span class="header-section-number">2.7</span> Common file types in Bioinformatics</h2>
-<p>Next week we will be learning about common file types in bioinformatics. For the remainder of the workshop, work in groups of 3-4 to construct a fact sheet that outlines and describes the format of one of the following file types. Include a list of tools that are commonly used to manipulate these file types. Your fact sheet should be comprehensive and provide an overview of the file type and its contents. Make your fact sheet easy to digest and visually appealing. You will have an opportunity to update these fact sheets in the first half of next weeks workshop, we will then share these among the class.</p>
-<p>File types</p>
-<ul>
-<li><p><code>.fasta</code></p></li>
-<li><p><code>.fastq</code></p></li>
-<li><p><code>.sam</code></p></li>
-<li><p><code>.vcf</code></p></li>
-<li><p><code>.gtf</code></p></li>
-<li><p><code>.bed</code></p></li>
-</ul>
 
 
 </section>
@@ -608,6 +612,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./W2_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
