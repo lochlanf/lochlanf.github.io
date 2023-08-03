@@ -234,11 +234,11 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Using the notes above, what are the possible causes of the fail and warning flags (<strong>Hint</strong>: you might want to check out how these libraries were created)? Would you propose doing any quality control based on this report. Discuss on your tables.</p></li>
 </ul>
 </blockquote>
-<p>You will note that there are four sequence files in the <code>data</code> directory. This is paired-end sequencing data (as indicated by the R1 and R2 in the file names). We need to run <code>fastqc</code> on all the files. The most efficient way to achieve this is by writing a <code>FOR</code> loop using the <code>*</code> wildcard.</p>
+<p>You will note that there are four sequence files in the <code>data</code> directory. This is paired-end sequencing data (as indicated by the R1 and R2 in the file names). We need to run <code>fastqc</code> on all the files. The most efficient way to achieve this is by writing a for loop using the <code>*</code> wildcard or a <code>while read</code> loop using a sample list. Either approach will work.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 3: Write a loop to perform FastQC on all the sequence files in the data directory</strong></p>
 <ul>
-<li><p>In the <code>src</code> directory, which is where you should house all your scripts, create a script called <code>fastqc_loop.sh</code>. Write a FOR loop to run <code>fastqc</code> on all the <code>.fastq.gz</code> files in the data directory.</p></li>
+<li><p>In the <code>src</code> directory, which is where you should house all your scripts, create a script called <code>fastqc_loop.sh</code>. Write a loop to run <code>fastqc</code> on all the <code>.fastq.gz</code> files in the data directory.</p></li>
 <li><p>Make sure you set the <code>-o</code> option to <code>~/GNA5012/week2_5/results/fastqc</code>.</p></li>
 <li><p>Open the file in a web browser and inspect the reports. Take note of any flags that have been raised. We will discuss these as a group.</p></li>
 </ul>
