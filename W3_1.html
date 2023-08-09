@@ -259,9 +259,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can also specify the adapter sequence if we are using non-standard adapters using the <code>-a</code> option. Other default parameters are as follows:</p>
 <table class="table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 58%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 54%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -317,6 +317,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>You may choose to include variables within your script, or use command line arguments to direct your script to the <code>fastq</code> files. Remember to set the <code>output_dir</code> appropriately to ensure the trimmed reads and associated files are written to the correct location.</p></li>
 </ul>
 </blockquote>
+<div class="cell">
+
+</div>
 </section>
 <section id="interpreting-the-results-of-trimgalore" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="interpreting-the-results-of-trimgalore"><span class="header-section-number">5.4</span> Interpreting the results of TrimGalore!</h2>
@@ -372,20 +375,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Set results directory</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="va">RESULTS</span><span class="op">=</span>~/GNA5012/week2_5/results/trimmed/</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Run trim_galore in paired end mode</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ex">trim_galore</span> <span class="at">--fastqc</span> <span class="at">--paired</span> <span class="at">--output_dir</span> <span class="va">$RESULTS</span> <span class="va">${sample}</span>_R1.fastq.gz <span class="va">${sample}</span>_R2.fastq.gz</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide sample_list.txt file as standard input using the &lt; redirect</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> sample_list.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="va">DATA</span><span class="op">=</span>~/GNA5012/week2_5/data/sequencing_run</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Run trim_galore in paired end mode</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ex">trim_galore</span> <span class="at">--fastqc</span> <span class="at">--paired</span> <span class="at">--output_dir</span> <span class="va">$RESULTS</span> <span class="va">$DATA</span>/<span class="va">${sample}</span>_R1.fastq.gz <span class="va">$DATA</span>/<span class="va">${sample}</span>_R2.fastq.gz</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Provide sample_list.txt file as standard input using the &lt; redirect</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> sample_list.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it’s your turn:</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 3: Performing TrimGalore! on several read sets using loops</strong></p>
 <ul>
-<li><p>Create a new directory in <code>results/trimmed</code> called <code>sequencing_run_loop</code>. This will be your results directory.</p></li>
+<li><p>Create a new directory in <code>results/trimmed</code> called <code>sequencing_run</code>. This will be your results directory.</p></li>
 <li><p>In the <code>src</code> directory create a new script and write a while read loop to iterate over all the samples in <code>data/sequencing_run</code> and performed TrimGalore! on them in paired-end mode.</p></li>
-<li><p>Once you have successfully executed your loop, remove the <code>results/trimmed/sequencing_run_loop</code> directory using <code>rm -rf results/trimmed/sequencing_run_loop/</code></p></li>
+<li><p>Once you have successfully executed your loop, remove the <code>results/trimmed/sequencing_run</code> directory using <code>rm -rf results/trimmed/sequencing_run/</code></p></li>
 </ul>
 </blockquote>
+<div class="cell">
+
+</div>
 
 
 </section>
