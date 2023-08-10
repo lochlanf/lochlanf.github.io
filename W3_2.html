@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GNA5012 - Applied Bioinformatics - 6&nbsp; Week 3 Workshop B - Sequence Alignment</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./W3_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GNA5012 - Applied Bioinformatics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">6.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">6.2</span>  Workshop Setup</a></li>
+  <li><a href="#running-commands-in-the-background" id="toc-running-commands-in-the-background"><span class="toc-section-number">6.3</span>  Running commands in the background</a></li>
+  <li><a href="#aligning-reads-with-bwa" id="toc-aligning-reads-with-bwa"><span class="toc-section-number">6.4</span>  Aligning reads with BWA</a></li>
+  <li><a href="#alignment-tools-and-methods" id="toc-alignment-tools-and-methods"><span class="toc-section-number">6.5</span>  Alignment tools and methods</a></li>
+  <li><a href="#manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" id="toc-manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="toc-section-number">6.6</span>  Manipulating sequence alignment maps and preparing them for downstream analyses</a></li>
+  </ul>
+</nav>
+<p>On Wednesday we performed quality control on sequencing reads. Now that we have a high quality set of sequencing reads, we can progress to the next stage in our analysis: Alignment. In the context of short-read sequencing, alignment refers to the arrangement of reads onto a reference genome according to their sequence identity. Alignment algorithms will use scoring methods to identify this sequence identity. This is an important precursor step to variant calling. By aligning our reads, we can begin to identify positions of variation when compared to a reference genome. The aligner that we will be using in today’s workshop is the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2705234/">Burrows-Wheeler Aligner</a>. This tool has been extensively cited and is used hundreds of times each day by researchers around the globe. There are several alignment algorithms within this package. The alignment algorithm that we will use is the <code>bwa mem</code> method. This is the recommended method for <code>bwa</code> alignments with input reads of &gt;70bp. In the second half of the workshop, we will index, sort and convert the <code>.sam</code> file to a <code>.bam</code> file in preparation for variant calling.</p>
+<div class="cell">
+
+</div>
+<section id="learning-objectives" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>To align exome sequencing reads to the human genome</p></li>
+<li><p>To manipulate alignment files and prepare them for downstream analyses</p></li>
+<li><p>To critically evaluate mapping statistics and metrics</p></li>
+</ul>
+</section>
+<section id="workshop-setup" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">6.2</span> Workshop Setup</h2>
+<p>Today’s workshop requires an indexed reference genome. Indexes are important files that allow tools to rapidly access information within a file. Each tool will use different indexing methods. BWA uses a modified FM-Index. This can be generated using the <code>bwa index</code> command. This is a time consuming step and, in the interests of time, we have generated this file for you. You will need to create a link to this directory by performing the following commands:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/GNA5012/week2_5</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /mnt/nfs/ubuntu/assessment/references/Homo_sapiens/NCBI/GRCh38/Sequence/BWAIndex/ ref</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will create a symbolic link to the reference genome and BWA index in a directory called <code>ref</code> within <code>week2_5</code></p>
+</section>
+<section id="running-commands-in-the-background" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="running-commands-in-the-background"><span class="header-section-number">6.3</span> Running commands in the background</h2>
+<p>Bioinformatic analyses is time consuming. You will have noticed that the execution of commands has thus far been linked to having the terminal window that is running the command open. This can be inconvenient, especially as some jobs can span days. To run scripts that are disconnected from the terminal we can leverage built-in bash functionality. The <code>nohup</code> command combined with the <code>&amp;</code> character can force jobs to run in the background and ignored “hang-up” signals. “Hang-up” signals are sent to processes for several reasons, one of which occurs when you disconnect from the terminal. Here is the syntax for backgrounding scripts:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> bash yourscript.sh <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will run the script as per normal, but after a short period of time you are able to close the terminal window and reconnect to the virtual machine without interrupting the execution of the script. You can monitor the progress of your script by checking for the generation of any files that you expect using <code>ls</code>.</p>
+</section>
+<section id="aligning-reads-with-bwa" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="aligning-reads-with-bwa"><span class="header-section-number">6.4</span> Aligning reads with BWA</h2>
+<p>We will be using BWA mem to align our reads today. We will be using the default parameters, which are appropriate for most standard analyses. These options can be changed if necessary. <a href="https://bio-bwa.sourceforge.net/bwa.shtml">Check out the documentation for BWA for more details.</a> <code>bwa mem</code> requires the following input:</p>
+<ul>
+<li><p>An index file</p></li>
+<li><p>Sequencing reads</p></li>
+<li><p>The number of threads (<code>-t</code> option)</p></li>
+</ul>
+<p>This is the syntax for <code>bwa mem</code> : <code>bwa mem -t 6 PATH_TO_INDEX_FILE READ_1 READ_2 &gt; OUTPUT.sam</code> . Where:</p>
+<ul>
+<li><p><code>-t 6</code> refers to 6 threads</p></li>
+<li><p><code>PATH_TO_INDEX_FILE</code> refers to the absolute path to the <code>genome.fa</code> file in the <code>ref</code> directory</p></li>
+<li><p><code>READ_1</code> refers to the absolute path to the forward read</p></li>
+<li><p><code>READ_2</code> refers to the absolute path to the reverse read</p></li>
+</ul>
+<p>The default behaviour of BWA is to return the output back to the terminal. Thus we must redirect standard output to save the file (<code>&gt; OUTPUT.sam</code> , where OUTPUT is your sample name.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 1: Write a script that will align your sequencing reads to the GRCh38 reference genome</strong></p>
+<ul>
+<li><p>Create a new directory in <code>results</code> called <code>aln</code>. This will be your results directory for your alignment.</p></li>
+<li><p>In the <code>src</code> directory create a new script and set-up variables pointing to your index file, trimmed forward read and trimmed reverse read, and the output directory. Set an additional variable called <code>SAMPLE_NAME</code> that corresponds to the name of your sample.</p></li>
+<li><p>Write a command that will use bwa-mem to align your sequencing reads to the reference genome. Ensure your script is well-documented via comments</p></li>
+<li><p><strong>Pause at this point, we will go over the solution as a group</strong></p></li>
+</ul>
+</blockquote>
+<p>Now that you have written your script you should execute it in the background. This will take ~40-60 minutes to run.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 2: Execute your script in the background</strong></p>
+<ul>
+<li><p>Using the <code>nohup</code> command and the <code>&amp;</code> operator, execute your script in the background.</p></li>
+<li><p>After five minutes, close your terminal window and reconnect to your VM. Navigate to the <code>aln</code> directory and type <code>ls -all</code>. You should see a <code>.sam</code> file starting to be generated. If you do not see this please attract the attention of one of the teaching staff.</p></li>
+</ul>
+</blockquote>
+</section>
+<section id="alignment-tools-and-methods" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="alignment-tools-and-methods"><span class="header-section-number">6.5</span> Alignment tools and methods</h2>
+<p>There are several different alignment tools that are frequently used in bioinformatics, including <code>bwa</code>, <code>bowtie2</code>, <code>STAR</code> and <code>HISAT</code>. These tools used different indexing approaches and alignment methods and some have specialised applications.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 3: Execute your script in the background</strong></p>
+<ul>
+<li><p>While you wait for your alignment to complete, generate a summary table comparing and contrasting five short-read alignment tools.</p></li>
+<li><p>Include <code>bwa</code> and <code>STAR</code>, and choose 3 other short-read alignment methods.</p></li>
+<li><p>Here are a list of studies that will inform your comparison:</p>
+<ul>
+<li><p><a href="https://www.frontiersin.org/articles/10.3389/fpls.2021.657240/full">Comparison of Short-Read Sequence Aligners Indicates Strengths and Weaknesses for Biologists to Consider</a></p></li>
+<li><p><a href="https://link.springer.com/article/10.1007/s00521-021-06188-z">New evaluation methods of read mapping by 17 aligners on simulated and empirical NGS data: an updated comparison of DNA- and RNA-Seq data from Illumina and Ion Torrent technologies</a></p></li>
+<li><p><a href="https://academic.oup.com/bioinformatics/article/38/8/2081/6525215">Performance optimization in DNA short read alignment</a></p></li>
+</ul></li>
+</ul>
+</blockquote>
+</section>
+<section id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="header-section-number">6.6</span> Manipulating sequence alignment maps and preparing them for downstream analyses</h2>
+<p>You will recall in Week 2 we evaluated different bioinformatic file types. SAM files are sequence alignment maps and contain information regarding the alignment of your sequencing reads to the reference genome. SAM files are human readable, but this makes them difficult for computational tools to interact with and thus slow. Moreover, sequences are aligned in order of the reads in your <code>fastq</code> files. Therefore they are out of order. Most downstream analyses require <code>BAM</code> files as input and that alignments are sorted by chromosomal location. We can convert our SAM files to BAM files and sort them using a tool called <a href="https://www.htslib.org/doc/samtools.html">Samtools</a>.</p>
+<p>Samtools is a tool that manipulates SAM/BAM files and has several functionalities. These include:</p>
+<ul>
+<li><p>Viewing sequence alignments (<code>samtools view</code>)</p></li>
+<li><p>Converting between SAM and BAM (<code>samtools view</code>)</p></li>
+<li><p>Sub-setting alignments by position (<code>samtools view</code>)</p></li>
+<li><p>Indexing alignments (<code>samtools index</code>)</p></li>
+<li><p>Sorting alignments (<code>samtools sort</code>)</p></li>
+<li><p>Calculating alignment metrics (<code>samtools flagstat</code>)</p></li>
+</ul>
+<p>Lets first explore <code>samtools view</code> and <code>samtools sort</code> to create some sorted binary alignment maps. We do this in two steps.</p>
+<ol type="1">
+<li><p>First we use <code>samtools view -bh</code> to convert out <code>.sam</code> file to binary format</p></li>
+<li><p>Then we sort the alignment using <code>samtools sort</code>.</p></li>
+</ol>
+<p>We can do this in a single line of code using pipes:</p>
+<ul>
+<li><code>samtools view -bh INPUT.sam | samtools sort &gt; OUTPUT.bam</code>, where INPUT and OUTPUT point to your input sam file and desired output bam file, respectively.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Exercise 4: Create a script to convert your <code>sam</code></strong> <strong>file to a <code>bam</code></strong> <strong>file and sort the alignment</strong></p>
+<ul>
+<li><p>In the <code>src</code> directory create a new script and set-up variables pointing to your <code>sam</code> file, your <code>results/aln</code> directory and your sample name</p></li>
+<li><p>Using <code>samtools sort</code> and <code>samtools view</code>, convert your sam file to a bam file and sort the alignment map.</p></li>
+<li><p>Add an extra line of code to index your bam file using <code>samtools index</code>. <strong>Note:</strong> The input for this should be the <code>bam</code> file that you are expecting to be made in the line above.</p></li>
+</ul>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./W3_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
