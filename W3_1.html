@@ -323,6 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>You may choose to include variables within your script, or use command line arguments to direct your script to the <code>fastq</code> files. Remember to set the <code>output_dir</code> appropriately to ensure the trimmed reads and associated files are written to the correct location.</p></li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Usage bash trim_reads.sh read1 read2</span></span>
@@ -399,6 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Once you have successfully executed your loop, remove the <code>results/trimmed/sequencing_run</code> directory using <code>rm -rf results/trimmed/sequencing_run/</code></p></li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># List all files in ~/GNA5012/week2_5/data/sequencing_run/</span></span>

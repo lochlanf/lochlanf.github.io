@@ -282,6 +282,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><strong>Pause at this point, we will go over the solution as a group</strong></p></li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Path to index file</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/ref/genome.fa</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">##Path to reads</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="va">READ1</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/trimmed/NIST7035_TAAGGCGA_L001_R1_001_val_1.fq.gz</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="va">READ2</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/trimmed/NIST7035_TAAGGCGA_L001_R2_001_val_2.fq.gz</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">##Path to output directory</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/aln</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">##Sample Name</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">##Align reads to GRCh38 reference genome using bwa mem in paired end mode</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">##Use 6 cpu threads and save output</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-t</span> 6 <span class="va">$INDEX</span> <span class="va">$READ1</span> <span class="va">$READ2</span> <span class="op">&gt;</span> <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span>.sam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now that you have written your script you should execute it in the background. This will take ~40-60 minutes to run.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 2: Execute your script in the background</strong></p>
@@ -290,6 +306,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>After five minutes, close your terminal window and reconnect to your VM. Navigate to the <code>aln</code> directory and type <code>ls -all</code>. You should see a <code>.sam</code> file starting to be generated. If you do not see this please attract the attention of one of the teaching staff.</p></li>
 </ul>
 </blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> bwa_align.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="alignment-tools-and-methods" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="alignment-tools-and-methods"><span class="header-section-number">6.5</span> Alignment tools and methods</h2>
@@ -337,6 +357,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Add an extra line of code to index your bam file using <code>samtools index</code>. <strong>Note:</strong> The input for this should be the <code>bam</code> file that you are expecting to be made in the line above.</p></li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/aln</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bh</span> <span class="at">-@</span> 6 <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.sam <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="op">&gt;</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.bam</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
