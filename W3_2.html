@@ -362,8 +362,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/aln</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bh</span> <span class="at">-@</span> 6 <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.sam <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="op">&gt;</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.bam</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${sample}</span>.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bh</span> <span class="at">-@</span> 6 <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.sam <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="op">&gt;</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
