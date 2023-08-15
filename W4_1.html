@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 4&nbsp; Week 2 Workshop A - Bioinformatic File Types</title>
+<title>GNA5012 - Applied Bioinformatics - 8&nbsp; Week 4 Workshop A - Post-Alignment Processing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./W2_2.html" rel="next">
-<link href="./W1_2.html" rel="prev">
+<link href="./W3_2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -133,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -178,7 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -198,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
+  <a href="./W4_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
   </div>
 </li>
     </ul>
@@ -212,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></h1>
 </div>
 
 
@@ -230,87 +229,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">4.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">4.2</span>  Workshop setup</a></li>
-  <li><a href="#understanding-bioinformatic-file-types" id="toc-understanding-bioinformatic-file-types"><span class="toc-section-number">4.3</span>  Understanding bioinformatic file types</a></li>
-  <li><a href="#exploring-and-manipulating-bioinformatic-file-types" id="toc-exploring-and-manipulating-bioinformatic-file-types"><span class="toc-section-number">4.4</span>  Exploring and manipulating bioinformatic file types</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">8.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">8.2</span>  Workshop Setup</a></li>
+  <li><a href="#evaluating-mapping-statistics" id="toc-evaluating-mapping-statistics"><span class="toc-section-number">8.3</span>  Evaluating mapping statistics</a></li>
+  <li><a href="#preparing-alignments-for-variant-calling" id="toc-preparing-alignments-for-variant-calling"><span class="toc-section-number">8.4</span>  Preparing alignments for variant calling</a></li>
+  <li><a href="#comparing-germline-variant-calling-tools" id="toc-comparing-germline-variant-calling-tools"><span class="toc-section-number">8.5</span>  Comparing germline variant calling tools</a></li>
   </ul>
 </nav>
-<p>Bioinformatic data is stored in a variety of different file types, each with a specific layout that is suited to particular applications. Understanding these file types and their format is important for downstream analyses and interpretation. In this workshop, we will be exploring bioinformatic file types that you will encounter in sequencing based analyses, including during variant calling and RNAseq.</p>
-<section id="learning-objectives" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.1</span> Learning Objectives</h2>
-<p>At the conclusion of today’s workshop students are expected to be able to:</p>
-<ul>
-<li><p>To summarise the main bioinformatic file types encountered in variant calling</p></li>
-<li><p>Use basic bash commands to manipulate common bioinformatic file types</p></li>
-</ul>
-</section>
-<section id="workshop-setup" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">4.2</span> Workshop setup</h2>
-<p>To download today’s workshop data enter the following commands</p>
-<ul>
-<li><p><code>cd ~</code></p></li>
-<li><p><code>mkdir GNA5012/week_2</code></p></li>
-<li><p><code>cd GNA5012/week_2</code></p></li>
-<li><p><code>wget http://lochlanf.github.io/week_2_W1.tar.gz</code></p></li>
-<li><p><code>tar -xf week_2_W1.tar.gz</code></p></li>
-</ul>
-</section>
-<section id="understanding-bioinformatic-file-types" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="understanding-bioinformatic-file-types"><span class="header-section-number">4.3</span> Understanding bioinformatic file types</h2>
-<p>In the online learning materials we learned about several bioinformatic file types, including FASTA, FASTQ, SAM/BAM, and VCF files. To reinforce your understanding of these file types, work in groups of 2-3 to construct a fact sheet that outlines the purpose and describes the format of one of the following file types. Include a list of tools that are commonly used to manipulate these file types. Your fact sheet should be comprehensive and provide an overview of the file type and its contents. Make your fact sheet easy to digest and visually appealing.</p>
-<p>These resources will be uploaded to moodle and shared with the class. You will have ~ 1 1/4 hours to work on this activity, as such it is important that you divide up the tasks associated with creating this fact sheet. Use the learning materials that are online, file format specifications that can be found on the internet, and the in uploaded in the <code>data</code> directory to assist you.</p>
-<p>File types</p>
-<ul>
-<li><p><code>.fasta/fa</code></p></li>
-<li><p><code>.fastq</code></p></li>
-<li><p><code>.sam</code></p></li>
-<li><p><code>.vcf</code></p></li>
-</ul>
+<p>On Friday we performed aligned reads to our reference genome using the Burrows-Wheeler Alignment tool. This generated a <code>.sam</code> file. We then used <code>samtools</code> to sort and index the alignment. In this workshop, we will explore the alignment and prepare the alignment for variant calling using <code>gatk</code> and <code>samtools</code>. One of the important steps we will perform is marking duplicates. In DNA sequencing, duplicates are usually a result of the PCR process. We can identify duplicates by looking at the alignment position and the CIGAR string. If two reads have mapped to the same region and have an identical CIGAR string we will mark these reads as duplicates and only take one read into account during variant calling.</p>
 <div class="cell">
 
 </div>
+<section id="learning-objectives" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">8.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>To analyse alignment metrics</p></li>
+<li><p>To mark duplicates using <code>gatk</code> and <code>picard</code></p></li>
+</ul>
 </section>
-<section id="exploring-and-manipulating-bioinformatic-file-types" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="exploring-and-manipulating-bioinformatic-file-types"><span class="header-section-number">4.4</span> Exploring and manipulating bioinformatic file types</h2>
-<p>In this section of the workshop we will be interfacing with some bioinformatic data. In the <code>data</code> subdirectory you will find a series of files in the formats described above. Use the remainder of the workshop to explore these files using <code>grep</code>, <code>awk</code>, and other methods that we learned last week. Some suggestions are:</p>
+<section id="workshop-setup" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">8.2</span> Workshop Setup</h2>
+<p>There is no additional set-up required for today’s workshop. Successful completion of today’s workshop is predicated on an aligned, sorted and indexed <code>.bam</code> file from Friday. If you attempted Friday’s workshop and were not able to successfully generate this <code>bam</code> file, we have done so for you.</p>
 <ul>
-<li>Use <code>grep</code> to identify what contigs are in the <code>.fa</code> file</li>
+<li>If you have not attempted last weeks workshop (including the alignment), you will need to do this before attempting today’s activities. See Week 3 - Workshop B for instructions and solutions.</li>
 </ul>
-<p><strong>Solution:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'&gt;'</span> GRCh38_chr20_chr22.fa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="evaluating-mapping-statistics" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="evaluating-mapping-statistics"><span class="header-section-number">8.3</span> Evaluating mapping statistics</h2>
+<p>Evaluating mapping statistics is an important quality control step. The precision and reliability of this alignment process can significantly impact the accuracy of variant calling, structural variation detection, and other essential analyses. However, the alignment procedure itself is not immune to errors, biases, and artifacts that can introduce misleading interpretations. This underscores the paramount importance of rigorously evaluating alignment metrics to ensure the fidelity of the alignment results. <code>samtools</code> has several functions that can assist us with evaluating mapping statistics. The first of which is <code>samtools flagstat</code>.</p>
+<p><code>samtools flagstat</code> uses the FLAG field of the <code>sam/bam</code> files to provide a summary of the alignments. Lets review what information is contained in the FLAG field.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot 2023-08-15 at 8.16.45 pm.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">FLAG field of SAM/BAM Files</figcaption><p></p>
+</figure>
 </div>
+<p>The combination of these bitwise FLAGS provided important information regarding the mapping quality. <code>samtools flagstat</code> will take these data and summarise it in an easily digestible format. Here is the output of <code>samtools flagstat</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot 2023-08-15 at 8.23.25 pm.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The output of samtools flagstat</figcaption><p></p>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise 1: Write a script to assess the quality of your mapping using <code>samtools flagstat</code>.</strong></p>
+<p>In the <code>src</code> directory create a new script called <code>flagstat.sh</code></p>
 <ul>
-<li>Use <code>awk</code> to subset variants from the <code>vcf</code> file by parameters (nucleotide, etc) in the file</li>
+<li><p>In the script, set up variables pointing to your output directory and the sample BAM.</p></li>
+<li><p>Use <code>samtools flagstat</code> to evaluate mapping metrics.</p></li>
+<li><p>At your tables, discuss the meaning of each metric. How did your mapping perform?</p></li>
 </ul>
-<p><strong>Solution:</strong></p>
+</blockquote>
+<p>We can also use <code>samtools stat</code> to evaluate mapping in greater depth. We won’t be exploring this in our class, but check out the documentation for this function <a href="https://www.htslib.org/doc/samtools-stats.html">here.</a> If you have time at the end of the workshop, feel free to explore <code>samtools stat</code>.</p>
+</section>
+<section id="preparing-alignments-for-variant-calling" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="preparing-alignments-for-variant-calling"><span class="header-section-number">8.4</span> Preparing alignments for variant calling</h2>
+<p>In the online materials you will have learned that aligned <code>BAM</code> files are not quite ready for variant calling. Depending on the downstream pipeline there is at least two additional steps</p>
+<ol type="1">
+<li><p>Recalibrating the base-call quality scores (GATK-HaplotypeCaller pipelines only)</p></li>
+<li><p>Marking Duplicates</p></li>
+<li><p>Indexing <code>BAM</code> files</p></li>
+</ol>
+<p>In our workshop, we will be using <a href="https://github.com/Illumina/strelka">the Strelka variant caller</a>. Both Strelka2 and HaplotypeCaller pipelines are acceptable variant calling pipelines with distinct advantages and disadvantages. The main reason we are employing Strelka2 rather than GATK-HaplotypeCaller in this workshop is due to the significantly shorter run-time of Strelka2 with human whole exome sequencing data. Strelka2 can perform this analysis in &lt;20 minutes, compared to hours with HaplotypeCaller. Thus to prepare our alignments for variant calling we need only to mark duplicates and index the resulting BAM file.</p>
+<p>We will use the markDuplicates function that is employed by Picard to mark our PCR duplicates. This method uses the genomic coordinates and the CIGAR string to mark duplicates, where if both of these fields are identical between reads one will be marked as a PCR duplicate and ignored during variant calling. This tool is included as part of the GATK group of tools. Here is an example of the syntax for a basic markDuplicates analysis:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">####search for variants with C ref allele</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"#"</span> HG00138.vcf <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$4 == "C"'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>Sample_name_here</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>Absolute_path_to_alignment_directory</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MarkDuplicates <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>## <span class="at">-I</span> = input bam</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-I</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>## <span class="at">-O</span> = output bam with marked duplicates</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">-O</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>## <span class="at">-M</span> = duplicate metrics</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-M</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_dup_metrics.txt</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Additional line of code to index the duplicate marked bam.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<blockquote class="blockquote">
+<p><strong>Exercise 2: Write a script to use picard MarkDuplicates to mark the PCR duplicates in your alignment</strong></p>
+<p>In the <code>src</code> directory create a new script called <code>markDuplicates.sh</code></p>
 <ul>
-<li>Write a FOR loop that will rename the sequences in the <code>fastq</code> files (sequence names are in the header - <code>@Sequence_name</code></li>
+<li><p>In the script, set up variables pointing to your aln directory and the sample name</p></li>
+<li><p>Use <code>gatk MarkDuplicates</code> to mark the PCR duplicates.</p></li>
+<li><p>Inspect the metrics file and comment on what you notice. What was the percentage of PCR duplicates? How does this compare to the initial FastQC reports?</p></li>
 </ul>
-<p><strong>Solution:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.fastq </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/ERR031935/HG00138/g'</span> <span class="va">${file}</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</blockquote>
+</section>
+<section id="comparing-germline-variant-calling-tools" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="comparing-germline-variant-calling-tools"><span class="header-section-number">8.5</span> Comparing germline variant calling tools</h2>
+<p>We are finally ready to call variants! We will do this on Friday. First, let’s evaluate different variant calling tools. The most common variant callers are HaplotypeCaller, Strelka2, Google DeepVariant, and FreeBayes.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 3: Generate a summary table comparing and contrasting five germline variant callers</strong></p>
 <ul>
-<li>Write a WHILE read loop that iterates over the <code>fastq</code> files and identifies reads with the MspI motif (<code>CCGG)</code> and writes them to a new file</li>
+<li><p>Include <code>haplotypeCaller</code>, <code>strelka2</code>, and <code>Google DeepVariant</code> in your table. Choose 2 other germline variant calling tools from the literature.</p></li>
+<li><p>Metrics you should consider include</p>
+<ul>
+<li><p>Specificity</p></li>
+<li><p>Sensitivity</p></li>
+<li><p>SNP vs Indel vs SV detection</p></li>
+<li><p>Computational requirements</p></li>
+<li><p>Runtime</p></li>
+</ul></li>
 </ul>
-<p><strong>Solution:</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> reads.txt</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">sample</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'CCGG'</span> <span class="va">${sample}</span>.fastq <span class="op">&gt;</span> <span class="va">${sample}</span>_MspI.fastq</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> reads.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>These are mere suggestions, this is time spent revising concepts from last week so please feel free to focus on whatever you feel you need to.</p>
+</blockquote>
 
 
 </section>
@@ -451,14 +474,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./W1_2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></span>
+      <a href="./W3_2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./W2_2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
