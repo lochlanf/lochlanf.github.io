@@ -281,6 +281,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>At your tables, discuss the meaning of each metric. How did your mapping perform?</p></li>
 </ul>
 </blockquote>
+<p><strong>Solution</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/aln</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam <span class="op">&gt;</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_flagstat.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We can also use <code>samtools stat</code> to evaluate mapping in greater depth. We won’t be exploring this in our class, but check out the documentation for this function <a href="https://www.htslib.org/doc/samtools-stats.html">here.</a> If you have time at the end of the workshop, feel free to explore <code>samtools stat</code>.</p>
 </section>
 <section id="preparing-alignments-for-variant-calling" class="level2" data-number="8.4">
@@ -294,18 +301,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In our workshop, we will be using <a href="https://github.com/Illumina/strelka">the Strelka variant caller</a>. Both Strelka2 and HaplotypeCaller pipelines are acceptable variant calling pipelines with distinct advantages and disadvantages. The main reason we are employing Strelka2 rather than GATK-HaplotypeCaller in this workshop is due to the significantly shorter run-time of Strelka2 with human whole exome sequencing data. Strelka2 can perform this analysis in &lt;20 minutes, compared to hours with HaplotypeCaller. Thus to prepare our alignments for variant calling we need only to mark duplicates and index the resulting BAM file.</p>
 <p>We will use the markDuplicates function that is employed by Picard to mark our PCR duplicates. This method uses the genomic coordinates and the CIGAR string to mark duplicates, where if both of these fields are identical between reads one will be marked as a PCR duplicate and ignored during variant calling. This tool is included as part of the GATK group of tools. Here is an example of the syntax for a basic markDuplicates analysis:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>Sample_name_here</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>Absolute_path_to_alignment_directory</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MarkDuplicates <span class="dt">\</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>## <span class="at">-I</span> = input bam</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">-I</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam <span class="dt">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>## <span class="at">-O</span> = output bam with marked duplicates</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">-O</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>## <span class="at">-M</span> = duplicate metrics</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">-M</span> <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_dup_metrics.txt</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">## Additional line of code to index the duplicate marked bam.</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>Sample_name_here</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>Absolute_path_to_alignment_directory</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MarkDuplicates <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>-I <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>-O <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>-M <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_dup_metrics.txt</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Exercise 2: Write a script to use picard MarkDuplicates to mark the PCR duplicates in your alignment</strong></p>
@@ -316,8 +319,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Inspect the metrics file and comment on what you notice. What was the percentage of PCR duplicates? How does this compare to the initial FastQC reports?</p></li>
 </ul>
 </blockquote>
+<p><strong>Solution</strong></p>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/aln</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MarkDuplicates <span class="dt">\</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>-I <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>.bam <span class="dt">\</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>-O <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>-M <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_dup_metrics.txt</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="comparing-germline-variant-calling-tools" class="level2" data-number="8.5">
