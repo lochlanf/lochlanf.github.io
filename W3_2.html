@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 6&nbsp; Week 3 Workshop B - Sequence Alignment</title>
+<title>GNA5012 - Applied Bioinformatics - 7&nbsp; Week 3 Workshop B - Sequence Alignment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,6 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./W4_1.html" rel="next">
 <link href="./W3_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -132,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -162,32 +163,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  <a href="./assessment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
   </div>
 </li>
     </ul>
@@ -201,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></h1>
 </div>
 
 
@@ -219,20 +230,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">6.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">6.2</span>  Workshop Setup</a></li>
-  <li><a href="#running-commands-in-the-background" id="toc-running-commands-in-the-background"><span class="toc-section-number">6.3</span>  Running commands in the background</a></li>
-  <li><a href="#aligning-reads-with-bwa" id="toc-aligning-reads-with-bwa"><span class="toc-section-number">6.4</span>  Aligning reads with BWA</a></li>
-  <li><a href="#alignment-tools-and-methods" id="toc-alignment-tools-and-methods"><span class="toc-section-number">6.5</span>  Alignment tools and methods</a></li>
-  <li><a href="#manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" id="toc-manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="toc-section-number">6.6</span>  Manipulating sequence alignment maps and preparing them for downstream analyses</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">7.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">7.2</span>  Workshop Setup</a></li>
+  <li><a href="#running-commands-in-the-background" id="toc-running-commands-in-the-background"><span class="toc-section-number">7.3</span>  Running commands in the background</a></li>
+  <li><a href="#aligning-reads-with-bwa" id="toc-aligning-reads-with-bwa"><span class="toc-section-number">7.4</span>  Aligning reads with BWA</a></li>
+  <li><a href="#alignment-tools-and-methods" id="toc-alignment-tools-and-methods"><span class="toc-section-number">7.5</span>  Alignment tools and methods</a></li>
+  <li><a href="#manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" id="toc-manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="toc-section-number">7.6</span>  Manipulating sequence alignment maps and preparing them for downstream analyses</a></li>
   </ul>
 </nav>
 <p>On Wednesday we performed quality control on sequencing reads. Now that we have a high quality set of sequencing reads, we can progress to the next stage in our analysis: Alignment. In the context of short-read sequencing, alignment refers to the arrangement of reads onto a reference genome according to their sequence identity. Alignment algorithms will use scoring methods to identify this sequence identity. This is an important precursor step to variant calling. By aligning our reads, we can begin to identify positions of variation when compared to a reference genome. The aligner that we will be using in today’s workshop is the <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2705234/">Burrows-Wheeler Aligner</a>. This tool has been extensively cited and is used hundreds of times each day by researchers around the globe. There are several alignment algorithms within this package. The alignment algorithm that we will use is the <code>bwa mem</code> method. This is the recommended method for <code>bwa</code> alignments with input reads of &gt;70bp. In the second half of the workshop, we will index, sort and convert the <code>.sam</code> file to a <code>.bam</code> file in preparation for variant calling.</p>
 <div class="cell">
 
 </div>
-<section id="learning-objectives" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</h2>
+<section id="learning-objectives" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">7.1</span> Learning Objectives</h2>
 <p>At the conclusion of today’s workshop students are expected to be able to:</p>
 <ul>
 <li><p>To align exome sequencing reads to the human genome</p></li>
@@ -240,8 +251,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>To critically evaluate mapping statistics and metrics</p></li>
 </ul>
 </section>
-<section id="workshop-setup" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">6.2</span> Workshop Setup</h2>
+<section id="workshop-setup" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">7.2</span> Workshop Setup</h2>
 <p>Today’s workshop requires an indexed reference genome. Indexes are important files that allow tools to rapidly access information within a file. Each tool will use different indexing methods. BWA uses a modified FM-Index. This can be generated using the <code>bwa index</code> command. This is a time consuming step and, in the interests of time, we have generated this file for you. You will need to create a link to this directory by performing the following commands:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/GNA5012/week2_5</span>
@@ -249,16 +260,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>This will create a symbolic link to the reference genome and BWA index in a directory called <code>ref</code> within <code>week2_5</code></p>
 </section>
-<section id="running-commands-in-the-background" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="running-commands-in-the-background"><span class="header-section-number">6.3</span> Running commands in the background</h2>
+<section id="running-commands-in-the-background" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="running-commands-in-the-background"><span class="header-section-number">7.3</span> Running commands in the background</h2>
 <p>Bioinformatic analyses is time consuming. You will have noticed that the execution of commands has thus far been linked to having the terminal window that is running the command open. This can be inconvenient, especially as some jobs can span days. To run scripts that are disconnected from the terminal we can leverage built-in bash functionality. The <code>nohup</code> command combined with the <code>&amp;</code> character can force jobs to run in the background and ignored “hang-up” signals. “Hang-up” signals are sent to processes for several reasons, one of which occurs when you disconnect from the terminal. Here is the syntax for backgrounding scripts:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nohup</span> bash yourscript.sh <span class="kw">&amp;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will run the script as per normal, but after a short period of time you are able to close the terminal window and reconnect to the virtual machine without interrupting the execution of the script. You can monitor the progress of your script by checking for the generation of any files that you expect using <code>ls</code>.</p>
 </section>
-<section id="aligning-reads-with-bwa" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="aligning-reads-with-bwa"><span class="header-section-number">6.4</span> Aligning reads with BWA</h2>
+<section id="aligning-reads-with-bwa" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="aligning-reads-with-bwa"><span class="header-section-number">7.4</span> Aligning reads with BWA</h2>
 <p>We will be using BWA mem to align our reads today. We will be using the default parameters, which are appropriate for most standard analyses. These options can be changed if necessary. <a href="https://bio-bwa.sourceforge.net/bwa.shtml">Check out the documentation for BWA for more details.</a> <code>bwa mem</code> requires the following input:</p>
 <ul>
 <li><p>An index file</p></li>
@@ -311,8 +322,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> bwa_align.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="alignment-tools-and-methods" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="alignment-tools-and-methods"><span class="header-section-number">6.5</span> Alignment tools and methods</h2>
+<section id="alignment-tools-and-methods" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="alignment-tools-and-methods"><span class="header-section-number">7.5</span> Alignment tools and methods</h2>
 <p>There are several different alignment tools that are frequently used in bioinformatics, including <code>bwa</code>, <code>bowtie2</code>, <code>STAR</code> and <code>HISAT</code>. These tools used different indexing approaches and alignment methods and some have specialised applications.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 3: Execute your script in the background</strong></p>
@@ -328,8 +339,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 </section>
-<section id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="header-section-number">6.6</span> Manipulating sequence alignment maps and preparing them for downstream analyses</h2>
+<section id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="manipulating-sequence-alignment-maps-and-preparing-them-for-downstream-analyses"><span class="header-section-number">7.6</span> Manipulating sequence alignment maps and preparing them for downstream analyses</h2>
 <p>You will recall in Week 2 we evaluated different bioinformatic file types. SAM files are sequence alignment maps and contain information regarding the alignment of your sequencing reads to the reference genome. SAM files are human readable, but this makes them difficult for computational tools to interact with and thus slow. Moreover, sequences are aligned in order of the reads in your <code>fastq</code> files. Therefore they are out of order. Most downstream analyses require <code>BAM</code> files as input and that alignments are sorted by chromosomal location. We can convert our SAM files to BAM files and sort them using a tool called <a href="https://www.htslib.org/doc/samtools.html">Samtools</a>.</p>
 <p>Samtools is a tool that manipulates SAM/BAM files and has several functionalities. These include:</p>
 <ul>
@@ -506,10 +517,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./W3_1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./W4_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

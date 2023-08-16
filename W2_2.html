@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 4&nbsp; Week 2 Workshop B - Quality control inspection of sequencing reads</title>
+<title>GNA5012 - Applied Bioinformatics - 5&nbsp; Week 2 Workshop B - Quality control inspection of sequencing reads</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,32 +163,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  <a href="./assessment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
   </div>
 </li>
     </ul>
@@ -202,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
 </div>
 
 
@@ -220,18 +230,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">4.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">4.2</span>  Workshop setup</a></li>
-  <li><a href="#sequencing-data-quality-control-metrics" id="toc-sequencing-data-quality-control-metrics"><span class="toc-section-number">4.3</span>  Sequencing data quality control metrics</a></li>
-  <li><a href="#performing-analysis-with-fastqc" id="toc-performing-analysis-with-fastqc"><span class="toc-section-number">4.4</span>  Performing analysis with FastQC</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">5.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">5.2</span>  Workshop setup</a></li>
+  <li><a href="#sequencing-data-quality-control-metrics" id="toc-sequencing-data-quality-control-metrics"><span class="toc-section-number">5.3</span>  Sequencing data quality control metrics</a></li>
+  <li><a href="#performing-analysis-with-fastqc" id="toc-performing-analysis-with-fastqc"><span class="toc-section-number">5.4</span>  Performing analysis with FastQC</a></li>
   </ul>
 </nav>
 <p>Sequencing technologies have revolutionised the field of genomics, enabling scientists to decipher the genetic makeup of organisms with unprecedented accuracy and depth. However, the vast amounts of raw sequencing data generated present unique challenges, including inherent errors and biases that can impact downstream analyses. Ensuring the reliability and accuracy of sequencing data is paramount, and quality control an indispensable step in the sequencing workflow. One widely used and powerful tool for assessing sequencing read quality is FastQC. This chapter explores the essential concepts and methodologies of sequencing read quality control, with a particular focus on the functionalities and applications of FastQC. You will learn how to apply this tool to assess the quality of their sequencing data andgain valuable insights into potential issues to make informed decisions regarding data pre-processing.</p>
 <div class="cell">
 
 </div>
-<section id="learning-objectives" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.1</span> Learning Objectives</h2>
+<section id="learning-objectives" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.1</span> Learning Objectives</h2>
 <p>At the conclusion of today’s workshop students are expected to be able to:</p>
 <ul>
 <li><p>Understand the role of quality control in pre-processing sequencing data</p></li>
@@ -239,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Critically evaluate common quality control metrics and propose solutions based on these metrics</p></li>
 </ul>
 </section>
-<section id="workshop-setup" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">4.2</span> Workshop setup</h2>
+<section id="workshop-setup" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">5.2</span> Workshop setup</h2>
 <p>To download today’s workshop data enter the following commands</p>
 <ul>
 <li><p><code>cd ~</code></p></li>
@@ -254,8 +264,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will use symbolic links a few times over the next few weeks to link to large raw data files and reference genomes.</p>
 <p>As you work through today’s exercises, remember to add comments to your code using the <code>#</code> symbol. You should convey what the script and commands are trying to achieve. This will also make it easier to deploy these scripts to analyse data for your upcoming assessment.</p>
 </section>
-<section id="sequencing-data-quality-control-metrics" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="sequencing-data-quality-control-metrics"><span class="header-section-number">4.3</span> Sequencing data quality control metrics</h2>
+<section id="sequencing-data-quality-control-metrics" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sequencing-data-quality-control-metrics"><span class="header-section-number">5.3</span> Sequencing data quality control metrics</h2>
 <p>We can use the <code>fastqc</code> tool to rapidly assess the quality of our sequencing and inform downstream quality control processing. Below are a list of the metrics that <code>fastqc</code> reports provide.</p>
 <ul>
 <li><p>Per Base Sequence Quality: This metric evaluates the quality scores of each base position in the reads. Quality scores are typically represented as Phred scores, which quantify the base-calling error probability. Lower Phred scores indicate lower confidence in the base call and may suggest poor sequencing quality.</p>
@@ -288,8 +298,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </section>
-<section id="performing-analysis-with-fastqc" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="performing-analysis-with-fastqc"><span class="header-section-number">4.4</span> Performing analysis with FastQC</h2>
+<section id="performing-analysis-with-fastqc" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="performing-analysis-with-fastqc"><span class="header-section-number">5.4</span> Performing analysis with FastQC</h2>
 <p>In today’s workshop, we will be analysing sequencing data from the <a href="https://www.nist.gov/programs-projects/genome-bottle">Genome In A Bottle</a> project. This project generated high quality variant calls on a number of reference samples using several sequencing modalities. The aim of the project was to create a “gold standard” to test genomic pipelines against, with the aim of achieving high sensitivity and specificity. In this workshop and over the coming weeks we will be evaluating whole exome sequencing data derived from the NA12878 cell line. DNA was extracted from this sample and exome sequencing libraries were prepared using the <a href="https://sapac.support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/samplepreps_nextera/nexterarapidcapture/nextera-rapid-capture-enrichment-guide-15037436-01.pdf">Nextera Rapid Capture Exome and Expanded Exome kit</a>. Libraries were sequenced using paired-end sequencing on a HiSeq2500 sequencing instrument. The data provided has been demultiplexed, converted to fastq files, and gzipped. Let’s take a look at these sequencing reads.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 1: Explore the reads using standard bash tools.</strong></p>
@@ -497,12 +507,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./W2_1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./W3_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

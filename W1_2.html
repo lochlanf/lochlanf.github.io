@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 2&nbsp; Week 1 Workshop B - Introduction shell scripting and pipelines</title>
+<title>GNA5012 - Applied Bioinformatics - 3&nbsp; Week 1 Workshop B - Introduction shell scripting and pipelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,32 +163,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  <a href="./assessment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
   </div>
 </li>
     </ul>
@@ -202,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
 </div>
 
 
@@ -220,17 +230,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">2.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">2.2</span>  Workshop setup</a></li>
-  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.3</span>  Redirects and pipes</a></li>
-  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.4</span>  Constructing basic FOR loops</a></li>
-  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.5</span>  Constructing basic WHILE loops</a></li>
-  <li><a href="#setting-variables" id="toc-setting-variables"><span class="toc-section-number">2.6</span>  Setting variables</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">3.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">3.2</span>  Workshop setup</a></li>
+  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">3.3</span>  Redirects and pipes</a></li>
+  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">3.4</span>  Constructing basic FOR loops</a></li>
+  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">3.5</span>  Constructing basic WHILE loops</a></li>
+  <li><a href="#setting-variables" id="toc-setting-variables"><span class="toc-section-number">3.6</span>  Setting variables</a></li>
   </ul>
 </nav>
 <p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
-<section id="learning-objectives" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">2.1</span> Learning Objectives</h2>
+<section id="learning-objectives" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">3.1</span> Learning Objectives</h2>
 <p>At the conclusion of today’s workshop students are expected to be able to:</p>
 <ul>
 <li><p>To combine a series of commands to manipulate common files and save the corresponding outputs using pipes and redirects</p></li>
@@ -238,8 +248,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>To formulate basic loops to execute a series of commands over multiple files</p></li>
 </ul>
 </section>
-<section id="workshop-setup" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">2.2</span> Workshop setup</h2>
+<section id="workshop-setup" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">3.2</span> Workshop setup</h2>
 <p>To download today’s workshop data enter the following commands</p>
 <ul>
 <li><p><code>cd ~/GNA5012/week_1/data/</code></p></li>
@@ -247,8 +257,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><code>tar -xf workshop_2.tar.gz</code></p></li>
 </ul>
 </section>
-<section id="redirects-and-pipes" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.3</span> Redirects and pipes</h2>
+<section id="redirects-and-pipes" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">3.3</span> Redirects and pipes</h2>
 <p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator (SHIFT+\ on most keyboards). Here is an example of how we might use perform the task outlined above using pipes:</p>
 <p><code>grep -v '#' HG002.vcf | grep 'chr1' | wc -l</code></p>
 <blockquote class="blockquote">
@@ -318,8 +328,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> HG002.vcf <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$4 == "T"'</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$5 == "C"'</span> <span class="op">&gt;</span> T_to_C_cts.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="constructing-basic-for-loops" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">2.4</span> Constructing basic FOR loops</h2>
+<section id="constructing-basic-for-loops" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">3.4</span> Constructing basic FOR loops</h2>
 <p>Loops are essential constructs that allow us to repeat tasks efficiently, making them fundamental tools in automating repetitive tasks. In bioinformatics this might mean trimming reads from multiple samples or calling variants across different patients. The most basic bash loop is the FOR loop.</p>
 <p>A “FOR” loop is a loop used in programming and scripting languages to repeatedly execute a block of code based on a defined sequence of values or a list of items. In the context of bash scripting, the “FOR” loop is a construct that allows you to perform a specific action for each item in a list, array, or a specified range of values. Here is an example of a FOR loop</p>
 <div class="cell">
@@ -376,8 +386,8 @@ This is iteration number 5</code></pre>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="constructing-basic-while-loops" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.5</span> Constructing basic WHILE loops</h2>
+<section id="constructing-basic-while-loops" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">3.5</span> Constructing basic WHILE loops</h2>
 <p>The second type of loop that we can employ in bash is the WHILE loop. The <strong><code>while</code></strong> loop is used when you want to repeat a block of code while a certain condition is true. We can use <code>while</code> loops in combination with the <code>read</code> function to construct powerful loops. These loops read each line of a file and continue until there are no lines remaining. For these loops to work we must provide an input file via the standard input stream. Here is an example:</p>
 <p>Suppose we have an input text file that contains the states of Australia, each on a new line. We can use a <code>while read</code> loop to print each of these lines to the terminal using the following code:</p>
 <div class="cell">
@@ -418,8 +428,8 @@ Western Australia</code></pre>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="setting-variables" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="setting-variables"><span class="header-section-number">2.6</span> Setting variables</h2>
+<section id="setting-variables" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="setting-variables"><span class="header-section-number">3.6</span> Setting variables</h2>
 <p>In bash we can assign values to variables. Bash variables are used to store data, such as text strings or numbers, within a Bash script or in the command line. They provide a way to reference and manipulate data as the script or command runs. Variables are very useful as they allow us to assign a string (such as a directory) to a variable and avoid typing it multiple times when writing a script. Here is an example of how we assign and access variables:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
@@ -623,12 +633,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./W1_1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./W2_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
