@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GNA5012 - Applied Bioinformatics - 2&nbsp; Week 1 Workshop B - Introduction shell scripting and pipelines</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./W2_1.html" rel="next">
+<link href="./W1_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GNA5012 - Applied Bioinformatics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">2.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">2.2</span>  Workshop setup</a></li>
+  <li><a href="#redirects-and-pipes" id="toc-redirects-and-pipes"><span class="toc-section-number">2.3</span>  Redirects and pipes</a></li>
+  <li><a href="#constructing-basic-for-loops" id="toc-constructing-basic-for-loops"><span class="toc-section-number">2.4</span>  Constructing basic FOR loops</a></li>
+  <li><a href="#constructing-basic-while-loops" id="toc-constructing-basic-while-loops"><span class="toc-section-number">2.5</span>  Constructing basic WHILE loops</a></li>
+  <li><a href="#setting-variables" id="toc-setting-variables"><span class="toc-section-number">2.6</span>  Setting variables</a></li>
+  </ul>
+</nav>
+<p>In workshop B we will apply the skills we have learned thus far and extend them to scripting. We will be constructing basic pipelines, using redirects and writing shell scripts which we can execute to perform a series of functions.</p>
+<section id="learning-objectives" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">2.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>To combine a series of commands to manipulate common files and save the corresponding outputs using pipes and redirects</p></li>
+<li><p>To construct and execute Bash scripts to solve multi-step programming problems</p></li>
+<li><p>To formulate basic loops to execute a series of commands over multiple files</p></li>
+</ul>
+</section>
+<section id="workshop-setup" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">2.2</span> Workshop setup</h2>
+<p>To download today’s workshop data enter the following commands</p>
+<ul>
+<li><p><code>cd ~/GNA5012/week_1/data/</code></p></li>
+<li><p><code>wget http://lochlanf.github.io/workshop_2.tar.gz</code></p></li>
+<li><p><code>tar -xf workshop_2.tar.gz</code></p></li>
+</ul>
+</section>
+<section id="redirects-and-pipes" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="redirects-and-pipes"><span class="header-section-number">2.3</span> Redirects and pipes</h2>
+<p>In workshop A we learned several useful commands, including <code>grep</code>, <code>sed</code>, <code>wc</code>, and <code>head</code>. These and other tools are often most powerful when linked together in a pipeline and saved to disk. For example, we might be interested in finding out how many variants in a <code>.vcf</code> file map to chromosome 1. To perform this task, we would need to first perform a <code>grep</code> search to isolate variants that are located on chromosome 1 and then use <code>wc</code> to count them. The most efficient way to perform this task is to use a pipe. A pipe will pass the standard output of one command to the input stream of another. In bash, pipes use the <code>|</code> operator (SHIFT+\ on most keyboards). Here is an example of how we might use perform the task outlined above using pipes:</p>
+<p><code>grep -v '#' HG002.vcf | grep 'chr1' | wc -l</code></p>
+<blockquote class="blockquote">
+<p><strong>Exercise 1: At your table discuss what is occurring at each step of this pipeline. Explain the logic behind these steps.</strong></p>
+</blockquote>
+<p>Redirects are use to pass information to and from bash streams. Each program deals with streams differently and has default behaviour, however this can be modified using redirects. Lets recap what the standard bash streams are:</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 42%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Input stream</th>
+<th>File Descriptor</th>
+<th>Explanation</th>
+<th>Redirect operator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Standard Input (stdin)</td>
+<td>0</td>
+<td>This stream the provides input to a program. Data can be passed to stdin by typing into the terminal or by redirecting a file/text.</td>
+<td><code>&lt;</code></td>
+</tr>
+<tr class="even">
+<td>Standard Output (stdout)</td>
+<td>1</td>
+<td>This is the stream to which output data from a program is written. This stream can return the output data to the terminal (ls, cat etc), write it to a file (many bioinformatics tools with output options) or be silent (ie. mv, cp etc) depending on the program.</td>
+<td><code>&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Standard Error (stderr)</td>
+<td>2</td>
+<td>This is the error stream. Programs pass error messages to this stream.</td>
+<td><code>2&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>As outlined above, the default behaviour of a program with respect to streams can be changed. We can use the redirect operators to pass information to a command (stdin, <code>&lt;</code>), write information to a file (via redirecting stdout <code>&gt;</code>), pass the output of a command to a subsequent program (piping, <code>|</code>), and write errors to a log (redirecting stderr, <code>&gt;&amp;</code>).</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 2: Lets practice using redirects and pipes.</strong></p>
+<ul>
+<li><p>In <code>week_1/data/workshop_2</code> you will find a file called <code>animals.csv</code>. Use the one of the viewing functions we learned last week to take a peek at this file. Our task is to search for entries containing the string rabbit and sort the output by the third column. This corresponds to the number of rabbits observed on that date.</p>
+<ul>
+<li><p>You will need to use two commands, with standard output of the first piped to the second command. (Hint: The second command will be <code>sort</code>. You will need to provide a few options for this to work successfully.) Review the manual to gain some insight into the options of <code>sort</code>.</p></li>
+<li><p>On what date was the least number of rabbits observed?</p></li>
+</ul></li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li><p>Now lets try an example using the vcf file in the <code>week_1/data/vcf</code> directory. Lets imagine that we are only interested in T&gt;C single nucleotide substitutions:</p>
+<ul>
+<li><p>Construct a pipeline that will remove the header from the vcf file, subset variants with a T reference allele and C alternative allele, and counts the number of variants.</p></li>
+<li><p>Redirect the output to a file called <code>T_to_C_cts.txt</code></p></li>
+<li><p>Note: You will need to use the <code>awk</code> command to achieve this. Here is an example of an awk command that will return entries with the string <code>hello</code> in the fourth column from a file called <code>example.txt</code>: <code>awk '$4 =="hello"' example.txt</code> . The <code>$4</code> indicates the fourth column. Check out the manual for awk for more details.</p></li>
+</ul></li>
+</ul>
+</blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">##Inverse grep for # to remove the header. Use awk to return only variants with a T allele in the fourth column. Use awk to return only variants with a C allele in the fifth column. T&gt;C</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> HG002.vcf <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$4 == "T"'</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'$5 == "C"'</span> <span class="op">&gt;</span> T_to_C_cts.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="constructing-basic-for-loops" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="constructing-basic-for-loops"><span class="header-section-number">2.4</span> Constructing basic FOR loops</h2>
+<p>Loops are essential constructs that allow us to repeat tasks efficiently, making them fundamental tools in automating repetitive tasks. In bioinformatics this might mean trimming reads from multiple samples or calling variants across different patients. The most basic bash loop is the FOR loop.</p>
+<p>A “FOR” loop is a loop used in programming and scripting languages to repeatedly execute a block of code based on a defined sequence of values or a list of items. In the context of bash scripting, the “FOR” loop is a construct that allows you to perform a specific action for each item in a list, array, or a specified range of values. Here is an example of a FOR loop</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> 1 2 3 4 5 </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is iteration number </span><span class="va">$i</span><span class="st">"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is iteration number 1
+This is iteration number 2
+This is iteration number 3
+This is iteration number 4
+This is iteration number 5</code></pre>
+</div>
+</div>
+<p>Lets deconstruct this loop.</p>
+<ul>
+<li><p>First we are assign values 1 to 5 to the variable <code>i</code>. This is done iteratively (ie. first <code>i=1</code>, the body of the loop is ran, and then <code>i=2</code>).</p></li>
+<li><p><code>do</code> instructs the bash interpreter to complete all commands listed in the body of the loop.</p></li>
+<li><p>The body of the loop is comprise of any number of commands, in this case we are just running the <code>echo</code> program.</p></li>
+<li><p><code>done</code> tells the interpreter that the loop is complete.</p></li>
+<li><p>This process repeats until all items in the list have been iterated over.</p></li>
+</ul>
+<p>Loops are best constructed in scripts. Last workshop we created a basic script to print out text into the terminal. Lets have a go at creating another script, but this time our script will contain a FOR loop.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 3: FOR loops</strong></p>
+<ul>
+<li><p>Last workshop we created a directory called <code>src</code> within <code>week_1</code>. Using <code>cd</code> navigate to this directory and create a new script called <code>my_first_loop.sh</code> using <code>nano</code></p></li>
+<li><p>Create a FOR loop that will find the pattern <code>CCC</code> in the <code>.dat</code> files in the creatures directory in <code>week_1/data/workshop_2</code></p></li>
+<li><p>Save the output to a file called CCC_Creatures.txt. Make sure you append the sequences for each creature to this file, with the sequences separated by the file name.</p></li>
+<li><p>Hint: You will need to use <code>echo</code>, <code>grep</code>, redirects (specifically the <code>&gt;&gt;</code> redirect), wildcards and variables for this exercise.</p></li>
+</ul>
+</blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">##Assign all the files with the extension *.dat in a directory to the variable file iteratively. Perform the body of the loop one file at a time, until the loop has iterated over all *.dat files.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="pp">*</span>.dat</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$file</span> <span class="op">&gt;&gt;</span> CCC_Creatures.txt</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'CCC'</span> <span class="va">$file</span> <span class="op">&gt;&gt;</span> CCC_Creatures.txt</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> samples.txt </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">samples</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'@'</span> <span class="va">${samples}</span>.fastq <span class="op">&gt;</span> <span class="va">${samples}</span>_sequence_headers.txt</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="constructing-basic-while-loops" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="constructing-basic-while-loops"><span class="header-section-number">2.5</span> Constructing basic WHILE loops</h2>
+<p>The second type of loop that we can employ in bash is the WHILE loop. The <strong><code>while</code></strong> loop is used when you want to repeat a block of code while a certain condition is true. We can use <code>while</code> loops in combination with the <code>read</code> function to construct powerful loops. These loops read each line of a file and continue until there are no lines remaining. For these loops to work we must provide an input file via the standard input stream. Here is an example:</p>
+<p>Suppose we have an input text file that contains the states of Australia, each on a new line. We can use a <code>while read</code> loop to print each of these lines to the terminal using the following code:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">states</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${states}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> example.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Victoria
+New South Wales
+Tasmania
+Queensland
+South Australia
+Western Australia</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise 4: Constructing a basic WHILE read loop</strong></p>
+<ul>
+<li><p>In the <code>week_1/data/workshop_2/sequences</code> directory you will find some fastq files. Using <code>ls</code>, <code>grep</code>, <code>sed</code> and redirects, create a text file called <code>samples.txt</code> that contains the sample name without the <code>.fastq</code> suffix</p></li>
+<li><p>Use a <code>while read</code> loop to search for the headers in each sequence (indicated by the <code>@</code> symbol) and redirect them to a new file which has a file name format of sample_sequence_headers.txt</p></li>
+</ul>
+</blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">##Make the sample file. First list all files, then search for files containing the fastq string, then remove the file extension</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">grep</span> fastq <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/.fastq//g'</span> <span class="op">&gt;</span> samples.txt </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">## While read loop. Assigns each line in samples.txt file to the samples variable. The loop will continue until there are no more lines in the sample file to read.</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">samples</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'@'</span> <span class="va">${samples}</span>.fastq <span class="op">&gt;</span> <span class="va">${samples}</span>_sequence_headers.txt</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> samples.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="setting-variables" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="setting-variables"><span class="header-section-number">2.6</span> Setting variables</h2>
+<p>In bash we can assign values to variables. Bash variables are used to store data, such as text strings or numbers, within a Bash script or in the command line. They provide a way to reference and manipulate data as the script or command runs. Variables are very useful as they allow us to assign a string (such as a directory) to a variable and avoid typing it multiple times when writing a script. Here is an example of how we assign and access variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">variable1</span><span class="op">=</span><span class="st">"My First Variable"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$variable1</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${variable1}</span>_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>My First Variable
+My First Variable_text</code></pre>
+</div>
+</div>
+<p>In this example, I have assigned the string <code>My First Variable</code> to <code>variable1</code>. I can then access that variable using the <code>$</code> operator. The curly braces on the third line allow us to access the variable and separate it from pre- and suffix text.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 5: Creating and using variables.</strong></p>
+<ul>
+<li><p>Create a new directory called <code>results</code> in the <code>week_1</code> directory.</p></li>
+<li><p>In the <code>src</code> directory, create a new script called <code>variables.sh</code></p></li>
+<li><p>In your script set two variables: <code>results</code> and <code>data</code> pointing to the absolute path of both of these directories</p></li>
+<li><p>Use the echo command to call these variables and print them out</p></li>
+<li><p>Execute your script</p></li>
+</ul>
+</blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="va">results</span><span class="op">=</span><span class="st">"/home/trainee42/GNA5012/week_1/results"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="va">data</span><span class="op">=</span><span class="st">"/home/trainee42/GNA5012/week_1/data"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${results}</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${data}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also use command line arguments to set variables that are provided when executing a script. These are indexed according to the position of the argument. For example, consider the following script called <code>course.sh</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The title of this course is </span><span class="va">${1}</span><span class="st">"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The code for this course is </span><span class="va">${2}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When executing the script, we can pass information to <code>$1</code> and <code>$2</code> by providing additional arguments:</p>
+<p><code>bash course.sh Applied_Bioinformatics GNA5012</code></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>The title of this course is Applied_Bioinformatics
+The code for this course is GNA5012</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Exercise 6: Creating and using variables provided as arguments</strong></p>
+<ul>
+<li><p>In the <code>src</code> directory, create a new script called <code>variables_2.sh</code></p></li>
+<li><p>Write a script that uses command line argument to set results and data variables</p></li>
+<li><p>Use the echo command to call these variables and print them out</p></li>
+<li><p>Execute your script</p></li>
+</ul>
+</blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Command usage: bash variables_2.sh RESULTS DATA</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="va">results</span><span class="op">=</span><span class="va">${1}</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="va">data</span><span class="op">=</span><span class="va">${2}</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${results}</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${data}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./W1_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./W2_1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GNA5012 - Applied Bioinformatics - 4&nbsp; Week 2 Workshop B - Quality control inspection of sequencing reads</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./W2_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GNA5012 - Applied Bioinformatics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">4.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">4.2</span>  Workshop setup</a></li>
+  <li><a href="#sequencing-data-quality-control-metrics" id="toc-sequencing-data-quality-control-metrics"><span class="toc-section-number">4.3</span>  Sequencing data quality control metrics</a></li>
+  <li><a href="#performing-analysis-with-fastqc" id="toc-performing-analysis-with-fastqc"><span class="toc-section-number">4.4</span>  Performing analysis with FastQC</a></li>
+  </ul>
+</nav>
+<p>Sequencing technologies have revolutionised the field of genomics, enabling scientists to decipher the genetic makeup of organisms with unprecedented accuracy and depth. However, the vast amounts of raw sequencing data generated present unique challenges, including inherent errors and biases that can impact downstream analyses. Ensuring the reliability and accuracy of sequencing data is paramount, and quality control an indispensable step in the sequencing workflow. One widely used and powerful tool for assessing sequencing read quality is FastQC. This chapter explores the essential concepts and methodologies of sequencing read quality control, with a particular focus on the functionalities and applications of FastQC. You will learn how to apply this tool to assess the quality of their sequencing data andgain valuable insights into potential issues to make informed decisions regarding data pre-processing.</p>
+<section id="learning-objectives" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">4.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li><p>Understand the role of quality control in pre-processing sequencing data</p></li>
+<li><p>Apply common bioinformatic tools to interrogate the quality of sequencing reads</p></li>
+<li><p>Critically evaluate common quality control metrics and propose solutions based on these metrics</p></li>
+</ul>
+</section>
+<section id="workshop-setup" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">4.2</span> Workshop setup</h2>
+<p>To download today’s workshop data enter the following commands</p>
+<ul>
+<li><p><code>cd ~</code></p></li>
+<li><p><code>mkdir GNA5012/week2_5</code></p></li>
+<li><p><code>cd GNA5012/week2_5</code></p></li>
+<li><p><code>ln -s /home/ubuntu/week_2/data</code></p></li>
+<li><p><code>mkdir src results</code></p></li>
+<li><p><code>mkdir results/fastqc</code></p></li>
+</ul>
+<p>The last command in this series creates a “symbolic link”. A symbolic link is like a shortcut. This provides you access to the data, which resides in <code>/home/ubuntu/week_2/data</code>, and will be used over the course of the next few weeks. Note that you can read these files but you cannot modify them (this is to prevent any inadvertent deletions or edits to the raw data!</p>
+<p>We will use symbolic links a few times over the next few weeks to link to large raw data files and reference genomes.</p>
+<p>As you work through today’s exercises, remember to add comments to your code using the <code>#</code> symbol. You should convey what the script and commands are trying to achieve. This will also make it easier to deploy these scripts to analyse data for your upcoming assessment.</p>
+</section>
+<section id="sequencing-data-quality-control-metrics" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sequencing-data-quality-control-metrics"><span class="header-section-number">4.3</span> Sequencing data quality control metrics</h2>
+<p>We can use the <code>fastqc</code> tool to rapidly assess the quality of our sequencing and inform downstream quality control processing. Below are a list of the metrics that <code>fastqc</code> reports provide.</p>
+<ul>
+<li><p>Per Base Sequence Quality: This metric evaluates the quality scores of each base position in the reads. Quality scores are typically represented as Phred scores, which quantify the base-calling error probability. Lower Phred scores indicate lower confidence in the base call and may suggest poor sequencing quality.</p>
+<ul>
+<li>Potential cause: In a low-quality region, the Phred scores may drop below a certain threshold (e.g., below 20), leading to increased chances of base-calling errors. This can arise due to issues like sequencing machine malfunctions, low-quality sequencing reagents, or problems with the sample preparation process.</li>
+</ul></li>
+<li><p>Per Sequence Quality Scores: This metric presents a graph showing the distribution of average quality scores across all sequences in the dataset. It helps identify whether the majority of sequences have high or low average quality scores.</p>
+<ul>
+<li>Potential cause: If the graph shows a skewed distribution towards low average quality scores, it may indicate that a significant portion of the data contains poor quality reads. This could be due to issues such as over-amplification during library preparation, contamination, or sequencing artifacts.</li>
+</ul></li>
+<li><p>Per Base Sequence Content: This metric assesses the percentage of each base position that corresponds to specific nucleotides (A, C, G, or T). It helps identify potential biases or contamination in the sequencing data.</p>
+<ul>
+<li>Potential cause: A sudden drop in the percentage of a specific nucleotide at certain positions may suggest sequencing-specific biases or contaminants. This could arise from technical artifacts, PCR biases, or even contamination during sample handling. Tagmentation based libraries will usually show a non-uniform per base sequence content in the first 20 nucleotides of reads.</li>
+</ul></li>
+<li><p>Per Base GC Content: This metric analyzes the distribution of GC content across all reads. Deviations from the expected GC content may indicate potential issues.</p>
+<ul>
+<li>Potential cause: If the GC content distribution shows a bimodal pattern, it could indicate a mixed sample, adapter contamination, or PCR amplification biases.</li>
+</ul></li>
+<li><p>Sequence Duplication Levels: This metric assesses the percentage of duplicate sequences in the dataset. High duplication levels may indicate PCR amplification biases or over-representation of certain regions in the genome.</p>
+<ul>
+<li>Example: If a significant portion of the data comprises duplicate reads, it might suggest PCR artifacts, library preparation biases, or issues during sample indexing. Some libraries, such as RNAseq libraries, will have biological sequence duplication owing to gene expression patterns. It is important to consider this before deduplicating data.</li>
+</ul></li>
+<li><p>Overrepresented Sequences: FastQC flags sequences that are overrepresented in the dataset. Such sequences may indicate adapter contamination, PCR artifacts, or even contamination from other sources.</p>
+<ul>
+<li>Potential Cause: Overrepresented sequences could be adapter sequences or primer dimers that were not properly removed during library preparation or contaminants that originated from the experimental environment.</li>
+</ul></li>
+<li><p>Adapter content</p>
+<ul>
+<li>FastQC will perform an automatic analysis to determine the presence of common adapter sequences. If no adapters are present these lines should be flat. If you observe a steady rise in adapter content towards the end of a read, this is indicative of adapters on the reads.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performing-analysis-with-fastqc" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="performing-analysis-with-fastqc"><span class="header-section-number">4.4</span> Performing analysis with FastQC</h2>
+<p>In today’s workshop, we will be analysing sequencing data from the <a href="https://www.nist.gov/programs-projects/genome-bottle">Genome In A Bottle</a> project. This project generated high quality variant calls on a number of reference samples using several sequencing modalities. The aim of the project was to create a “gold standard” to test genomic pipelines against, with the aim of achieving high sensitivity and specificity. In this workshop and over the coming weeks we will be evaluating whole exome sequencing data derived from the NA12878 cell line. DNA was extracted from this sample and exome sequencing libraries were prepared using the <a href="https://sapac.support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/samplepreps_nextera/nexterarapidcapture/nextera-rapid-capture-enrichment-guide-15037436-01.pdf">Nextera Rapid Capture Exome and Expanded Exome kit</a>. Libraries were sequenced using paired-end sequencing on a HiSeq2500 sequencing instrument. The data provided has been demultiplexed, converted to fastq files, and gzipped. Let’s take a look at these sequencing reads.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 1: Explore the reads using standard bash tools.</strong></p>
+<ul>
+<li><p>Use the <code>zcat</code> tool to read the gzipped <code>fastq</code> files. Pipe this to <code>less</code> and <code>head</code> to take a look at each file.</p></li>
+<li><p>Using <code>zcat</code>, <code>grep</code> and <code>wc</code>, identify the number of sequences in each file. What do you notice?</p></li>
+</ul>
+</blockquote>
+<p>Now that we have a basic understanding of these files we can use <code>fastqc</code> to take a closer look at their quality. Here is an example of how to use fastqc:</p>
+<p><code>fastqc -o results ERR10129302.fastq.gz</code></p>
+<p>Let’s unpack this command. The <code>fastqc</code> command will initialise fastqc. The <code>-o</code> option specifies the output directory. If this is ran in the <code>week2_5</code> directory, our results will go to <code>week2_5/results</code>. The final string is the name of the file we are analysing.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 2: Assess the quality of the reads using FastQC</strong></p>
+<ul>
+<li><p>In the <code>src</code> directory, which is where you should house all your scripts, create a script called <code>fastqc.sh</code>. Run<code>fastqc</code> on one of sequence files.</p></li>
+<li><p>Make sure you set the <code>-o</code> option to <code>~/GNA5012/week2_5/results/fastqc</code>.</p></li>
+<li><p>Use winSCP or CyberDuck to download these files to your computer. If you are unsure of how to achieve this. If you are unsure how to do this, please review the following videos: <a href="https://www.youtube.com/watch?v=Pu-PCMPsOpg">winSCP (windows)</a> / <a href="https://www.youtube.com/watch?v=_JycUAoybCg">CyberDuck (Mac OSX)</a>. Make sure you select SFTP as the file transfer protocol. If you are still unsure, approach a tutor for assistance.</p></li>
+<li><p>Open the file in a web browser and inspect the reports. Take note of any flags that have been raised.</p></li>
+<li><p>Using the notes above, what are the possible causes of the fail and warning flags (<strong>Hint</strong>: you might want to check out how these libraries were created)? Would you propose doing any quality control based on this report. Discuss on your tables.</p></li>
+</ul>
+</blockquote>
+<p>You will note that there are four sequence files in the <code>data</code> directory. This is paired-end sequencing data (as indicated by the R1 and R2 in the file names). We need to run <code>fastqc</code> on all the files. The most efficient way to achieve this is by writing a <code>FOR</code> loop using the <code>*</code> wildcard.</p>
+<blockquote class="blockquote">
+<p><strong>Exercise 3: Write a loop to perform FastQC on all the sequence files in the data directory</strong></p>
+<ul>
+<li><p>In the <code>src</code> directory, which is where you should house all your scripts, create a script called <code>fastqc_loop.sh</code>. Write a FOR loop to run <code>fastqc</code> on all the <code>.fastq.gz</code> files in the data directory.</p></li>
+<li><p>Make sure you set the <code>-o</code> option to <code>~/GNA5012/week2_5/results/fastqc</code>.</p></li>
+<li><p>Open the file in a web browser and inspect the reports. Take note of any flags that have been raised. We will discuss these as a group.</p></li>
+</ul>
+</blockquote>
+<p>Next week we will be performing quality control on these reads. Over the coming week, have a think about what quality control we should perform. Is there evidence of adapters? Should we quality trim reads? Should we discard any sequences? These are all decisions that we have to make in any sequencing experiment. You should justify your decisions and make notes of them in a README style document.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./W2_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
