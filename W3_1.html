@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 6&nbsp; Week 3 Workshop A - Quality control and read trimming</title>
+<title>GNA5012 - Applied Bioinformatics - 5&nbsp; Week 3 Workshop A - Quality control and read trimming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -163,42 +163,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assessment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></a>
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W3_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
   </div>
 </li>
     </ul>
@@ -212,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></h1>
 </div>
 
 
@@ -230,19 +220,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">6.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">6.2</span>  Workshop setup</a></li>
-  <li><a href="#performing-quality-trimming-with-trimgalore" id="toc-performing-quality-trimming-with-trimgalore"><span class="toc-section-number">6.3</span>  Performing quality trimming with TrimGalore!</a></li>
-  <li><a href="#interpreting-the-results-of-trimgalore" id="toc-interpreting-the-results-of-trimgalore"><span class="toc-section-number">6.4</span>  Interpreting the results of TrimGalore!</a></li>
-  <li><a href="#performing-trimgalore-on-several-read-sets-using-loops" id="toc-performing-trimgalore-on-several-read-sets-using-loops"><span class="toc-section-number">6.5</span>  Performing TrimGalore! on several read sets using loops</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">5.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">5.2</span>  Workshop setup</a></li>
+  <li><a href="#performing-quality-trimming-with-trimgalore" id="toc-performing-quality-trimming-with-trimgalore"><span class="toc-section-number">5.3</span>  Performing quality trimming with TrimGalore!</a></li>
+  <li><a href="#interpreting-the-results-of-trimgalore" id="toc-interpreting-the-results-of-trimgalore"><span class="toc-section-number">5.4</span>  Interpreting the results of TrimGalore!</a></li>
+  <li><a href="#performing-trimgalore-on-several-read-sets-using-loops" id="toc-performing-trimgalore-on-several-read-sets-using-loops"><span class="toc-section-number">5.5</span>  Performing TrimGalore! on several read sets using loops</a></li>
   </ul>
 </nav>
 <p>Last week we used the <code>FastQC</code> tool to evaluate the quality of an exome sequencing experiment performed as part of the Genome In A Bottle project. The report generated by <code>FastQC</code> identified several quality concerns that could impact downstream analyses. This is common with sequencing data, and it is exceedingly rare that, even with the best sequencing runs, you will not encounter some quality issues. As bioinformaticians, one of our main tasks is to identify and rectify these issues where possible. Once we receive the data we can perform a couple of bioinformatic preprocessing steps to try and fix these concerns, however not all quality issues can be resolved computationally. The adage of ‘Garbage in, Garbage out’ is often true - this is why we like to get involved in experiments as soon as possible, and before data is generated! In this workshop, we will use a popular read trimming tool (<code>TrimGalore!</code>) to remove sequencing adapters and perform basic sequence quality correction.</p>
 <div class="cell">
 
 </div>
-<section id="learning-objectives" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">6.1</span> Learning Objectives</h2>
+<section id="learning-objectives" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">5.1</span> Learning Objectives</h2>
 <p>At the conclusion of today’s workshop students are expected to be able to:</p>
 <ul>
 <li><p>Setup project directories and architectures using best practices for organising computational analyses</p></li>
@@ -251,12 +241,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Compare and contrast quality metrics before and after read trimming</p></li>
 </ul>
 </section>
-<section id="workshop-setup" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">6.2</span> Workshop setup</h2>
+<section id="workshop-setup" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">5.2</span> Workshop setup</h2>
 <p>There is no specific setup for today’s workshop. In the first 15 minutes we will discuss how to organise projects effectively. This will include a short presentation and setting up a mock project in by following in real time. We will cover things like consistent project architecture and directory structure for reproducible and organised bioinformatic analysis. Setting projects up correctly will help you keep track of your analysis and be important over the coming weeks as you perform several different analyses, each generated a number of output files.</p>
 </section>
-<section id="performing-quality-trimming-with-trimgalore" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="performing-quality-trimming-with-trimgalore"><span class="header-section-number">6.3</span> Performing quality trimming with TrimGalore!</h2>
+<section id="performing-quality-trimming-with-trimgalore" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="performing-quality-trimming-with-trimgalore"><span class="header-section-number">5.3</span> Performing quality trimming with TrimGalore!</h2>
 <p><a href="https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md">TrimGalore!</a> is a tool that wraps <a href="https://cutadapt.readthedocs.io/en/stable/">cutadapt</a> and <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a> into a convenient, flexible and easy to use tool. When correctly configured, TrimGalore! can:</p>
 <ul>
 <li><p>Perform basic quality trimming using the cutadapt method (with both default and user-set phred thresholds)</p></li>
@@ -341,8 +331,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">trim_galore</span> <span class="at">--fastqc</span> <span class="at">--paired</span> <span class="at">--output_dir</span> <span class="va">$OUTDIR</span> <span class="va">${1}</span> <span class="va">${2}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="interpreting-the-results-of-trimgalore" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="interpreting-the-results-of-trimgalore"><span class="header-section-number">6.4</span> Interpreting the results of TrimGalore!</h2>
+<section id="interpreting-the-results-of-trimgalore" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="interpreting-the-results-of-trimgalore"><span class="header-section-number">5.4</span> Interpreting the results of TrimGalore!</h2>
 <p>TrimGalore! will generate several files, including trimmed <code>fastq</code> files, and trimming and <code>fastqc</code> reports. If you have successfully ran TrimGalore! your <code>results/trimmed/</code> directory will look something like this:</p>
 <p><img src="images/Screenshot 2023-08-08 at 9.47.24 pm.png" class="img-fluid"></p>
 <p>Let’s explore what some of these files contain:</p>
@@ -368,8 +358,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </blockquote>
 </section>
-<section id="performing-trimgalore-on-several-read-sets-using-loops" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="performing-trimgalore-on-several-read-sets-using-loops"><span class="header-section-number">6.5</span> Performing TrimGalore! on several read sets using loops</h2>
+<section id="performing-trimgalore-on-several-read-sets-using-loops" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="performing-trimgalore-on-several-read-sets-using-loops"><span class="header-section-number">5.5</span> Performing TrimGalore! on several read sets using loops</h2>
 <p>It is rare that we would perform analysis on a single sample or set of reads. We would typically analyse a sequencing run which can contain anywhere from 8 to 24+ samples. To automate this process we can employ loops. Simple <code>for</code> loops are not well suited for this type of analysis as we are dealing with paired end reads. Instead we can use <code>while read</code> loops to iterate over a sample sheet containing our sample names. There are two important elements to a <code>while read</code> loop:</p>
 <ul>
 <li><p>The input file: The sample sheet should contain the base name without an extensions. We can construct this using <code>ls</code> <code>grep</code> and <code>sed.</code></p></li>
@@ -569,12 +559,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./W2_2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./W3_2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
