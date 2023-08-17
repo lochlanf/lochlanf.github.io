@@ -276,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>SAMPLE_NAME</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span>PATH_TO_OUTPUT_DIRECTORY</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>~/GNA5012/week2_5/ref/genome.fa</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python2</span> configureStrelkaGermlineWorkflow.py <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python2</span> <span class="va">${STRELKA}</span>/configureStrelkaGermlineWorkflow.py <span class="dt">\</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>--bam <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>--referenceFasta <span class="va">$REF</span> <span class="dt">\</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>--runDir <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span> <span class="dt">\</span></span>
