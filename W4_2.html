@@ -306,6 +306,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Save your script and execute it</p></li>
 </ul>
 </blockquote>
+<p><strong>Solution</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">STRELKA</span><span class="op">=</span>/mnt/nfs/ubuntu/strelka-2.9.2.centos6_x86_64/bin/</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">ALN_DIRECTORY</span><span class="op">=</span>~/GNA5012/week2_5/results/aln</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span>~/GNA5012/week2_5/results/variant_calling</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>~/GNA5012/week2_5/ref/genome.fa</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">python2</span> <span class="va">${STRELKA}</span>/configureStrelkaGermlineWorkflow.py <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>--bam <span class="va">${ALN_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>_marked_duplicates.bam <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>--referenceFasta <span class="va">$REF</span> <span class="dt">\</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>--runDir <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span> <span class="dt">\</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>--exome</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="running-the-strelka2-workflow" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="running-the-strelka2-workflow"><span class="header-section-number">9.4</span> Running the Strelka2 workflow</h2>
@@ -322,6 +336,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 </blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python2</span> <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span>/runWorkflow.py <span class="at">-m</span> local <span class="at">-j</span> 6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="evaluating-strelka2-variant-calling" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="evaluating-strelka2-variant-calling"><span class="header-section-number">9.5</span> Evaluating Strelka2 Variant calling</h2>
@@ -332,6 +350,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use <code>zcat</code>, <code>grep</code> and <code>wc</code> to evaluate the number of raw variant calls present in your VCF file.</li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span>~/GNA5012/week2_5/results/variant_calling</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span>/results/variants/variants.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"#"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Information regarding variant filtering is contained in the FILTER column. If the variant passed all filters this will be indicated by the string <code>PASS</code>. We can use this knowledge to identify the number of variants passing all filters.</p>
 <blockquote class="blockquote">
 <p><strong>Exercise 4: Calculate the number of variant calls that passed automated filtering</strong></p>
@@ -339,14 +364,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use <code>zcat</code>, <code>grep</code> and <code>wc</code> to evaluate the number of variants with the string <code>PASS</code> in the filter column.</li>
 </ul>
 </blockquote>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span>~/GNA5012/week2_5/results/variant_calling</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> <span class="va">${OUTPUT}</span>/<span class="va">${SAMPLE}</span>/results/variants/variants.vcf.gz <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"#"</span> <span class="kw">|</span> <span class="fu">grep</span> PASS <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>We can perform similar tasks using <code>bcftools</code>. <code>bcftools</code> is a bespoke tool that is designed specifically for analysing and manipulating VCF files. <a href="https://samtools.github.io/bcftools/bcftools.html">Click here to review the documentation for <code>bcftools</code>.</a> You will notice that there are several helpful features included in this tool. The ones we will focus on is the <code>bcftools view</code> and <code>bcftools stats</code> functions.</p>
 <p><code>bcftools view</code> allows you to filter and manipulate the <code>vcf</code> file. You can filter the file by chromosome position, filter criteria, and other aspects of the file. Here is an example of how we might use <code>bcftools view</code> to subset a VCF file to include only variants that passed filtration. This example also calculates statistics on the variants passing filtering.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">VARIANT_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/variant_calling</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>SAMPLE_NAME</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/variants.vcf.gz <span class="op">&gt;</span> <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> stats <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf <span class="op">&gt;</span>  <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS_Stats.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">VARIANT_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/variant_calling</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>SAMPLE_NAME</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/variants.vcf.gz <span class="op">&gt;</span> <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> stats <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf <span class="op">&gt;</span>  <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS_Stats.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Exercise 5: Use bcftools to subset your VCF file to include only variants passing filtering.</strong></p>
@@ -356,6 +388,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Calculate statistics on the unfiltered VCF file. What do you notice?</li>
 </ul>
 </blockquote>
+<p><strong>Solution</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">VARIANT_DIRECTORY</span><span class="op">=</span>/home/trainee42/GNA5012/week2_5/results/variant_calling</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NIST7035</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/variants.vcf.gz <span class="op">&gt;</span> <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> stats <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS.vcf <span class="op">&gt;</span>  <span class="va">${VARIANT_DIRECTORY}</span>/<span class="va">${SAMPLE}</span>/results/variants/<span class="va">${SAMPLE}</span>_PASS_Stats.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="empirical-variant-scoring-filtration-in-strelka2" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="empirical-variant-scoring-filtration-in-strelka2"><span class="header-section-number">9.6</span> Empirical variant scoring filtration in Strelka2</h2>
