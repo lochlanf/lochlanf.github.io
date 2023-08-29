@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GNA5012 - Applied Bioinformatics - 10&nbsp; Week 5 Workshop A - Variant Filtration and visualising variant calls</title>
+<title>GNA5012 - Applied Bioinformatics - 11&nbsp; Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./W6_1.html" rel="next">
-<link href="./W4_2.html" rel="prev">
+<link href="./W5_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -41,8 +40,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -147,12 +144,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W5_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></a>
+  <a href="./W5_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W6_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></a>
+  <a href="./W6_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></a>
   </div>
 </li>
     </ul>
@@ -166,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></h1>
 </div>
 
 
@@ -184,102 +181,102 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">10.1</span>  Learning Objectives</a></li>
-  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">10.2</span>  Workshop Setup</a></li>
-  <li><a href="#hard-filtering-variants" id="toc-hard-filtering-variants"><span class="toc-section-number">10.3</span>  Hard filtering variants</a></li>
-  <li><a href="#visualising-sequence-alignments" id="toc-visualising-sequence-alignments"><span class="toc-section-number">10.4</span>  Visualising sequence alignments</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">11.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">11.2</span>  Workshop Setup</a></li>
+  <li><a href="#discussion-one-bash" id="toc-discussion-one-bash"><span class="toc-section-number">11.3</span>  Discussion one: bash</a></li>
+  <li><a href="#a-bioinformatics-perspective-on-r" id="toc-a-bioinformatics-perspective-on-r"><span class="toc-section-number">11.4</span>  A bioinformatics perspective on R</a></li>
+  <li><a href="#overview-of-r-workshop-structure" id="toc-overview-of-r-workshop-structure"><span class="toc-section-number">11.5</span>  Overview of R workshop structure</a></li>
+  <li><a href="#discussion-one-r-versus-bash" id="toc-discussion-one-r-versus-bash"><span class="toc-section-number">11.6</span>  Discussion one: R versus bash</a></li>
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio"><span class="toc-section-number">11.7</span>  Installing R and RStudio</a></li>
+  <li><a href="#a-basic-guide-to-rstudio" id="toc-a-basic-guide-to-rstudio"><span class="toc-section-number">11.8</span>  A basic guide to RStudio</a></li>
   </ul>
 </nav>
-<p>This chapter represents the final step in the variant calling process. Last week we generated both a raw and EVS-filtered variant call file for our genome-in-a-bottle exome sequencing experiment. Today we will explore additional filtration and visualise our variants to inspect what a “good” and “bad” variant call looks like. We will be using a tool called <a href="https://software.broadinstitute.org/software/igv/download">IGV</a>. IGV is a genome browser and can be used to load in sequence alignments and visualise them. We can use IGV to manually inspect variants. By manually inspecting variants that pass filtration and fail filtration we can begin to understand the variant filtration process and its importance.</p>
+<section id="learning-objectives" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">11.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li>Understand the strengths and weaknesses of using bash for bioinformatics</li>
+<li>Learn about the benefits of <strong>R</strong> for bioinformatics</li>
+<li>Produce a working installation for <strong>R</strong> and <strong>RStudio</strong> on their personal machine</li>
+</ul>
 <div class="cell">
 
 </div>
-<section id="learning-objectives" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">10.1</span> Learning Objectives</h2>
-<p>At the conclusion of today’s workshop students are expected to be able to:</p>
-<ul>
-<li><p>Perform additional hard filtering of variants using <code>bcftools</code></p></li>
-<li><p>Visualise sequence alignments using <code>IGV</code> and examine variant calls</p></li>
-<li><p>Explain common reasons for variants failing filtration, with reference to the specific reason a variant has been filtered.</p></li>
-</ul>
 </section>
-<section id="workshop-setup" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">10.2</span> Workshop Setup</h2>
+<section id="workshop-setup" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">11.2</span> Workshop Setup</h2>
 <p>To prepare for today’s workshop activities you need to</p>
 <ul>
-<li><p>Download <a href="https://software.broadinstitute.org/software/igv/download">IGV</a>. IGV is a java application and is compatible with Windows and Mac OSX based computers. We will be loading in <code>BAM</code> and <code>BAI</code> files that will consume ~3GB of RAM. If you run into issues regarding memory consumption please get the attention of one of the teaching staff who will propose alternatives.</p></li>
-<li><p>Download the duplicate marked <code>BAM</code> and <code>BAI</code> files you generated in Week Four to your laptop. Also download your <code>variants.vcf.gz</code> file from the variants results directory. Place all of these files in the same directory on your local PC</p></li>
+<li><p>Install <a href="https://www.r-project.org/">R</a> and the free desktop version of <a href="https://posit.co/download/rstudio-desktop/">RStudio</a>. If you run into difficulties, that’s okay; this first class is devoted to making sure everyone has a working copy of <code>RStudio</code> so they don’t fall behind in future weeks.</p></li>
+<li><p>Be prepared to discuss your experiences with bash scripting in previous weeks.</p></li>
 </ul>
 </section>
-<section id="hard-filtering-variants" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="hard-filtering-variants"><span class="header-section-number">10.3</span> Hard filtering variants</h2>
-<p>Our VCF file we generated last week (<code>variants.vcf.gz</code>) has already been filtered using EVS, however we can explore how well hard-filtration matches the EVS-based filtration using <code>bcftools</code>. You can use <code>bcftools</code> to filter based on any metric in the <code>FORMAT</code> column of the <code>.vcf</code> file. You can find the metrics available in the <code>FORMAT</code> column and their description in the header of the VCF file.</p>
+<section id="discussion-one-bash" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="discussion-one-bash"><span class="header-section-number">11.3</span> Discussion one: bash</h2>
+<p>In this part of the class, we’ll solicit your opinions about using bash so far:</p>
 <blockquote class="blockquote">
-<p><strong>Exercise 1: Using zcat, grep and less, view the header of the VCF file and the options available in the FORMAT column</strong></p>
+<p><em>Key topics</em>:</p>
 <ul>
-<li><p>You can enter this command directly into the terminal, however take note of how you do it for future reference.</p></li>
-<li><p>You will need to use pipes to complete this task.</p></li>
-<li><p>Discuss at your tables the metrics generated by Strelka2 in the <code>FORMAT</code> column of the VCF files. What information can you glean from them?</p></li>
-</ul>
-</blockquote>
-<p>Now that you’ve identified what metrics are available to you, you can use <code>bcftools</code> to perform hard-filtering on them. The standard syntax of <code>bcftools</code> for filtration is:</p>
-<ul>
-<li><code>bcftools view -i 'METRIC &gt;= VALUE' input_vcf.vcf.gz</code></li>
-</ul>
-<p>Let’s break this down</p>
-<ul>
-<li><p><code>bcftools view</code> - This will open the <code>vcf</code> file and return it to standard output</p></li>
-<li><p><code>-i</code> this option says to include variants that meet a given criteria</p></li>
-<li><p><code>'METRIC &gt;= VALUE'</code> - Here we replace <code>METRIC</code> with an expression that is present in the <code>FORMAT</code> column and <code>VALUE</code> with our desired threshold. For example</p>
-<ul>
-<li><code>'DP &gt;= 20'</code> - This would only include variants with a depth of &gt; 20 reads.</li>
-</ul></li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Exercise 2: Use <code>bcftools</code></strong> <strong>to filter variants based on a depth threshold of 10</strong></p>
-<ul>
-<li><p>In your src directory, create a new script called <code>depth_filter.sh</code></p>
-<ul>
-<li><p>Set up variables to point to your vcf file. Use the principles we learned in previous weeks to set your variables appropriately</p></li>
-<li><p>Use DP &gt;=10 as the filter expression</p></li>
-<li><p>Redirect your output to a new vcf file called <code>variants_DP_filtered.vcf</code> in the results directory for your variants.</p></li>
-</ul></li>
-<li><p>How many variants were filtered out using a simple depth threshold of 10?</p></li>
-</ul>
-</blockquote>
-<p>We can string filter criteria together using the <code>&amp;&amp;</code> and <code>||</code> operators. These refer to AND and OR, respectively. If you use the <code>&amp;&amp;</code> operator, variants must meet all criteria to be included. If you use the <code>||</code> operator, if a variant meets one of the criteria it will be included in the output. For example:</p>
-<ul>
-<li><p><code>bcftools view -i 'DP &gt;= 20 &amp;&amp; GQX &gt;= 30'</code> : This expression will include only variants with a depth of &gt;= 20 <strong>and</strong> a genotype quality of &gt;=30.</p></li>
-<li><p><code>bcftools view -i 'DP &gt;= 20 || GQX &gt;= 30'</code> : This expression will include variants with a depth of &gt;=20 <strong>or</strong> a genotype quality of &gt;=30.</p></li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Exercise 3: Use <code>bcftools</code></strong> <strong>to filter variants based on a depth threshold of 10 AND/OR a GQX of &gt;=20</strong></p>
-<ul>
-<li><p>In your src directory, create a new script called <code>depth_GQX_filter.sh</code></p>
-<ul>
-<li><p>Set up variables to point to your vcf file. Use the principles we learned in previous weeks to set your variables appropriately</p></li>
-<li><p>Write two lines of code using <code>bcftools</code>. The first should filter using the <code>&amp;&amp;</code> operator, redirecting the output to a new VCF file. The second should filter using the <code>||</code> operator, redirecting the output to a different VCF file.</p></li>
-<li><p>Remember to name the output files appropriately.</p></li>
-</ul></li>
-<li><p>Compare and contrast the resulting VCF files. What do you notice about the number of variants in each? Which is more permissive?</p></li>
+<li><p>What have you liked about bash?</p></li>
+<li><p>What is hard to get used to?</p></li>
+<li><p>How do you think you’ll use bash scripting in the future?</p></li>
 </ul>
 </blockquote>
 </section>
-<section id="visualising-sequence-alignments" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="visualising-sequence-alignments"><span class="header-section-number">10.4</span> Visualising sequence alignments</h2>
-<p>Sequence alignments and variant calls can be visualised using interactive tools such as <code>IGV</code>. <code>IGV</code> is a genome browser that will take as input a <code>BAM</code> file. <code>IGV</code> will only work if an accompanying <code>.BAI</code> index file is found in the same directory as the <code>BAM</code> file. Watch the following short videos on loading <code>BAM</code> files into <code>IGV</code>, sequencing data basics and inspecting SNPs in <code>IGV</code>.</p>
-<p></p><div class="quarto-video"><video id="video_shortcode_videojs_video1" width="250" height="175" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="images/IGV.mp4"></video></div> <div class="quarto-video"><iframe src="https://www.youtube.com/embed/E_G8z_2gTYM" width="250" height="175" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div> <div class="quarto-video"><iframe src="https://www.youtube.com/embed/eZUI6lcIX3I" width="250" height="175" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div><p></p>
-<p>There are a number of reasons why variants are filtered by Strelka2. These are outlined in the weeks readings and also in the header of the VCF file</p>
-<p><img src="images/Screenshot 2023-08-22 at 8.21.04 pm.png" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p><strong>Exercise 4: Using IGV, visualise variants that pass filtration and those that are filtered for each reason.</strong></p>
+<section id="a-bioinformatics-perspective-on-r" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="a-bioinformatics-perspective-on-r"><span class="header-section-number">11.4</span> A bioinformatics perspective on R</h2>
+<p>Matt will give you a brief presentation on R, particularly related to genomics and visualisation, with examples from a few papers. Slides will be available after class in the Week 7 Moodle.</p>
+</section>
+<section id="overview-of-r-workshop-structure" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="overview-of-r-workshop-structure"><span class="header-section-number">11.5</span> Overview of R workshop structure</h2>
 <ul>
-<li><p>You will need to ensure that you load the <code>.BAM</code> and <code>.VCF</code> into IGV</p></li>
-<li><p>Use grep to identify variants that failed filtration for each filtering criteria.</p></li>
-<li><p>Take note of what the appearance of the variant and the alignment. Compare this with a variant that passed filtration</p></li>
-<li><p>Discuss this at your tables before we discuss as a group.</p></li>
+<li>Week 6
+<ul>
+<li>Because of your upcoming assignment, we’re trying to minimise exposure to new commands and instead focus on understanding the costs and benefits of bash scripting versus R. By end of week you should have working installations of R and RStudio and be capable of knitting an R notebook.</li>
+</ul></li>
+<li>Weeks 8 and 9
+<ul>
+<li>In these weeks, we’ll focus on learning R’s basic data structures and using some simple visualisation techniques.</li>
+<li>We will emphasise some typical use cases in bioinformatics workflows.</li>
+</ul></li>
+<li>Weeks 10 and 11
+<ul>
+<li>In these weeks, you’ll use packages from the Bioconductor ecosystem to load and manipulate vcf files, and perform some simple analyses of kinship and population structure.</li>
+<li>You will also learn how to produce more complex plots suitable for displaying genomic variants.</li>
+</ul></li>
+<li>Final assignment
+<ul>
+<li>Your final assignment will involve the production of reproducible code in bash and R that cleans and aligns raw reads, produces and filters a VCF file, then loads the VCF in R and runs several genomic analyses and visualisations.</li>
+<li>We will explain more details about this assignment after returning grades on the first.</li>
+<li>You will receive enough assignment details to have an opportunity to do some initial work during the mid-semester break should you choose to.</li>
+</ul></li>
+<li>Week 12
+<ul>
+<li>The final week of the class will be devoted to a Q&amp;A component similar to the first assignment.</li>
+</ul></li>
+</ul>
+</section>
+<section id="discussion-one-r-versus-bash" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="discussion-one-r-versus-bash"><span class="header-section-number">11.6</span> Discussion one: R versus bash</h2>
+<p>Here, we’ll discuss the benefits of R for bioinformatics.</p>
+<blockquote class="blockquote">
+<p><em>Key topics</em>:</p>
+<ul>
+<li><p>Why might an employer value expertise in R?</p></li>
+<li><p>What looks easier to accomplish in R compared to bash?</p></li>
 </ul>
 </blockquote>
+</section>
+<section id="installing-r-and-rstudio" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="installing-r-and-rstudio"><span class="header-section-number">11.7</span> Installing R and RStudio</h2>
+<p>We hope you’ve had a chance to install the free desktop version of RStudio, along with the latest version of R, prior to class.</p>
+<p>During the workshop, Matt will check in with each of you to verify that you’ve gotten both programs properly installed.</p>
+<p>R and RStudio are available for all common desktop platforms, including Windows, macOS, and various flavours of Linux.</p>
+<p>If you’re having trouble with your installs, don’t worry! The purpose of this first R workshop is to get everyone’s installation working. As long as your install works by today, there’s no risk of falling behind.</p>
+</section>
+<section id="a-basic-guide-to-rstudio" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="a-basic-guide-to-rstudio"><span class="header-section-number">11.8</span> A basic guide to RStudio</h2>
+<p>This section is time-dependent - if many students need additional help with R installation, it will be moved to the Friday session. Matt will showcase the basic features of RStudio and its similarities and differences with bash.</p>
 
 
 </section>
@@ -420,18 +417,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./W4_2.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 4 Workshop B - Variant Calling</span></span>
+      <a href="./W5_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./W6_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
