@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>GNA5012 - Applied Bioinformatics - 12&nbsp; Week 6 Workshop B - Reproducible research and R notebooks</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./W6_1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 6 Workshop B - Reproducible research and R notebooks</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">GNA5012 - Applied Bioinformatics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessment.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Week 1 Workshop A - Introduction to the shell</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W1_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Week 1 Workshop B - Introduction shell scripting and pipelines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Week 2 Workshop A - Bioinformatic File Types</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W2_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Week 2 Workshop B - Quality control inspection of sequencing reads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Week 3 Workshop A - Quality control and read trimming</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W3_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 3 Workshop B - Sequence Alignment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W4_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 4 Workshop A - Post-Alignment Processing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W4_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 4 Workshop B - Variant Calling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W5_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Week 5 Workshop A - Variant Filtration and visualising variant calls</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W6_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W6_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 6 Workshop B - Reproducible research and R notebooks</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 6 Workshop B - Reproducible research and R notebooks</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">12.1</span>  Learning Objectives</a></li>
+  <li><a href="#workshop-setup" id="toc-workshop-setup"><span class="toc-section-number">12.2</span>  Workshop Setup</a></li>
+  <li><a href="#customizing-r-notebooks" id="toc-customizing-r-notebooks"><span class="toc-section-number">12.3</span>  Customizing R notebooks</a></li>
+  <li><a href="#r-packages-and-bioconductor" id="toc-r-packages-and-bioconductor"><span class="toc-section-number">12.4</span>  R packages and Bioconductor</a></li>
+  <li><a href="#showcasing-some-features-of-the-snprelate-package" id="toc-showcasing-some-features-of-the-snprelate-package"><span class="toc-section-number">12.5</span>  Showcasing some features of the SNPRelate package</a></li>
+  <li><a href="#accessing-gds-files" id="toc-accessing-gds-files"><span class="toc-section-number">12.6</span>  Accessing GDS files</a></li>
+  <li><a href="#examining-the-structure-of-a-gds-file" id="toc-examining-the-structure-of-a-gds-file"><span class="toc-section-number">12.7</span>  Examining the structure of a GDS file</a></li>
+  <li><a href="#ld-filtering" id="toc-ld-filtering"><span class="toc-section-number">12.8</span>  LD filtering</a></li>
+  <li><a href="#using-principal-components-analysis-for-snp-data" id="toc-using-principal-components-analysis-for-snp-data"><span class="toc-section-number">12.9</span>  Using principal components analysis for SNP data</a></li>
+  <li><a href="#a-preview-of-indexing-and-variable-creation-using-r" id="toc-a-preview-of-indexing-and-variable-creation-using-r"><span class="toc-section-number">12.10</span>  A preview of indexing and variable creation using R</a></li>
+  <li><a href="#closing-gds-objects" id="toc-closing-gds-objects"><span class="toc-section-number">12.11</span>  Closing GDS objects</a></li>
+  <li><a href="#discussion-reproducibility" id="toc-discussion-reproducibility"><span class="toc-section-number">12.12</span>  Discussion: Reproducibility</a></li>
+  <li><a href="#post-class-quiz" id="toc-post-class-quiz"><span class="toc-section-number">12.13</span>  Post-class “quiz”</a></li>
+  </ul>
+</nav>
+<section id="learning-objectives" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">12.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li>Understand how to format an R notebook</li>
+<li>Install Bioconductor packages for VCF manipulation</li>
+<li>Observe some common workflows for SNP data using various Bioconductor packages</li>
+<li>Appreciate the importance of reproducible research</li>
+<li>Run and knit an R notebook, then save it as a PDF</li>
+</ul>
+<div class="cell">
+
+</div>
+</section>
+<section id="workshop-setup" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="workshop-setup"><span class="header-section-number">12.2</span> Workshop Setup</h2>
+<p>To prepare for today’s workshop activities you need to have a working copy of R and RStudio installed.</p>
+<p>You should also read the two papers on reproducible research, which can be found in the Week 6 content.</p>
+</section>
+<section id="customizing-r-notebooks" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="customizing-r-notebooks"><span class="header-section-number">12.3</span> Customizing R notebooks</h2>
+<p>Matt will give you a brief presentation on R notebook formatting, with an emphasis on the text sections rather than on code.</p>
+</section>
+<section id="r-packages-and-bioconductor" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="r-packages-and-bioconductor"><span class="header-section-number">12.4</span> R packages and Bioconductor</h2>
+<p>Most R packages can be downloaded using the <strong>install.packages()</strong> function.</p>
+<p>However, many bioinformatics-specific packages are located in the Bioconductor repository, which requires you to download a special package manager called <em>BiocManager</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly=</span><span class="cn">TRUE</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we’re going to install two <em>Bioconductor</em> packages. The first package, <em>gdsfmt</em>, converts various genotype formats (including VCF) to the GDS format, which is easier and faster for R to access. The second package, <em>SNPRelate</em>, contains several functions for calculating relatedness and population structure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"gdsfmt"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"SNPRelate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sometimes, it can be a little difficult to get a working Bioconductor installation, so we will be dedicating a portion of the class to making sure this works.</p>
+</section>
+<section id="showcasing-some-features-of-the-snprelate-package" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="showcasing-some-features-of-the-snprelate-package"><span class="header-section-number">12.5</span> Showcasing some features of the SNPRelate package</h2>
+<p>The following content is heavily based on the primary <a href="https://bioconductor.org/packages/release/bioc/vignettes/SNPRelate/inst/doc/SNPRelate.html">tutorial</a> for the <em>SNPRelate</em> package, with some additional commentary. Don’t worry about understanding all of the code, this is intended to just be a demonstration of some basic features. You will learn how to use these commands and data objects in future weeks.</p>
+<p>First, we’ll load the relevant packages into the R environment with the <em> </em>require()** command.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gdsfmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: gdsfmt</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(SNPRelate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: SNPRelate</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>SNPRelate</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-gds-files" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="accessing-gds-files"><span class="header-section-number">12.6</span> Accessing GDS files</h2>
+<p>We’re going to open a GDS file bundled with <em>SNPRelate</em> that contains some data from the HapMap project. In future weeks, we will discuss importing VCF files and converting them into GDS objects.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>genofile <span class="ot">&lt;-</span> <span class="fu">snpgdsOpen</span>(<span class="fu">snpgdsExampleFileName</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="examining-the-structure-of-a-gds-file" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="examining-the-structure-of-a-gds-file"><span class="header-section-number">12.7</span> Examining the structure of a GDS file</h2>
+<p>We can examine the GDS file with the <strong>snpgdsSummary()</strong> command, as well as just invoking the object directly. You can see that this contains a lot of the same information as a VCF file - we can see chromosomes, positions of SNPs on chromosomes, as well as some information not typically bundled in a VCF, like population and sex information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">snpgdsSummary</span>(genofile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The file name: /Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/SNPRelate/extdata/hapmap_geno.gds 
+The total number of samples: 279 
+The total number of SNPs: 9088 
+SNP genotypes are stored in SNP-major mode (Sample X SNP).</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>genofile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>File: /Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library/SNPRelate/extdata/hapmap_geno.gds (709.6K)
++    [  ] *
+|--+ sample.id   { VStr8 279 ZIP(29.9%), 679B }
+|--+ snp.id   { Int32 9088 ZIP(34.8%), 12.3K }
+|--+ snp.rs.id   { VStr8 9088 ZIP(40.1%), 36.2K }
+|--+ snp.position   { Int32 9088 ZIP(94.7%), 33.6K }
+|--+ snp.chromosome   { UInt8 9088 ZIP(0.94%), 85B } *
+|--+ snp.allele   { VStr8 9088 ZIP(11.3%), 4.0K }
+|--+ genotype   { Bit2 279x9088, 619.0K } *
+\--+ sample.annot   [ data.frame ] *
+   |--+ family.id   { VStr8 279 ZIP(34.4%), 514B }
+   |--+ father.id   { VStr8 279 ZIP(31.5%), 220B }
+   |--+ mother.id   { VStr8 279 ZIP(30.9%), 214B }
+   |--+ sex   { VStr8 279 ZIP(17.0%), 95B }
+   \--+ pop.group   { VStr8 279 ZIP(6.18%), 69B }</code></pre>
+</div>
+</div>
+</section>
+<section id="ld-filtering" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="ld-filtering"><span class="header-section-number">12.8</span> LD filtering</h2>
+<p>SNPs close together on a chromosome can be filtered for linkage disequilibrium using <strong>snpgdsLDpruning()</strong>. This is often a good idea before producing a principal components analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>snpset <span class="ot">&lt;-</span> <span class="fu">snpgdsLDpruning</span>(genofile, <span class="at">ld.threshold=</span><span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>SNP pruning based on LD:
+Excluding 365 SNPs on non-autosomes
+Excluding 1 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
+    # of samples: 279
+    # of SNPs: 8,722
+    using 1 thread
+    sliding window: 500,000 basepairs, Inf SNPs
+    |LD| threshold: 0.25
+    method: composite
+Chromosome 1: 82.40%, 590/716
+Chromosome 2: 79.38%, 589/742
+Chromosome 3: 80.79%, 492/609
+Chromosome 4: 80.78%, 454/562
+Chromosome 5: 83.04%, 470/566
+Chromosome 6: 81.24%, 459/565
+Chromosome 7: 81.78%, 386/472
+Chromosome 8: 77.87%, 380/488
+Chromosome 9: 82.21%, 342/416
+Chromosome 10: 82.61%, 399/483
+Chromosome 11: 81.66%, 365/447
+Chromosome 12: 82.44%, 352/427
+Chromosome 13: 82.27%, 283/344
+Chromosome 14: 81.91%, 231/282
+Chromosome 15: 85.50%, 224/262
+Chromosome 16: 79.86%, 222/278
+Chromosome 17: 78.74%, 163/207
+Chromosome 18: 81.95%, 218/266
+Chromosome 19: 90.83%, 109/120
+Chromosome 20: 79.48%, 182/229
+Chromosome 21: 81.75%, 103/126
+Chromosome 22: 84.48%, 98/116
+7,111 markers are selected in total.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>snpset.id <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">unname</span>(snpset))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-principal-components-analysis-for-snp-data" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="using-principal-components-analysis-for-snp-data"><span class="header-section-number">12.9</span> Using principal components analysis for SNP data</h2>
+<p>Principal components analysis, a common form of dimensionality reduction, can be a good way to detect if your dataset has geographic/population structure. In this example, we have three populations derived from Western European, Nigerian, and Han Chinese samples. Because these regions are not close together geographically and/or historically, we get clearly defined clusters.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">snpgdsPCA</span>(genofile, <span class="at">num.thread=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Principal Component Analysis (PCA) on genotypes:
+Excluding 365 SNPs on non-autosomes
+Excluding 1 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
+    # of samples: 279
+    # of SNPs: 8,722
+    using 2 threads
+    # of principal components: 32
+PCA:    the sum of all selected genotypes (0,1,2) = 2446510
+CPU capabilities:
+Thu Aug 31 12:19:35 2023    (internal increment: 1760)
+
+[..................................................]  0%, ETC: ---        
+[==================================================] 100%, completed, 0s
+Thu Aug 31 12:19:35 2023    Begin (eigenvalues and eigenvectors)
+Thu Aug 31 12:19:35 2023    Done.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="W6_2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also run our PCA on SNPs filtered for linkage disequilibrium, to see how that might change results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pca2 <span class="ot">&lt;-</span> <span class="fu">snpgdsPCA</span>(genofile, <span class="at">snp.id=</span>snpset.id, <span class="at">num.thread=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Principal Component Analysis (PCA) on genotypes:
+Excluding 1,977 SNPs (non-autosomes or non-selection)
+Excluding 0 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
+    # of samples: 279
+    # of SNPs: 7,111
+    using 2 threads
+    # of principal components: 32
+PCA:    the sum of all selected genotypes (0,1,2) = 1988089
+CPU capabilities:
+Thu Aug 31 12:19:37 2023    (internal increment: 1760)
+
+[..................................................]  0%, ETC: ---        
+[==================================================] 100%, completed, 0s
+Thu Aug 31 12:19:37 2023    Begin (eigenvalues and eigenvectors)
+Thu Aug 31 12:19:37 2023    Done.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="W6_2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="a-preview-of-indexing-and-variable-creation-using-r" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="a-preview-of-indexing-and-variable-creation-using-r"><span class="header-section-number">12.10</span> A preview of indexing and variable creation using R</h2>
+<p>Finally, let’s create a variable containing the population information in the GDS file, using R’s indexing syntax. We can then use the <strong>which()</strong> command with conditional indexing to identify which values correspond to one of the populations. We can then export the sample ID information to a new variable, then index that variable by our population info to produce a PCA of one population grouping. Does it still look like a simple cluster?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">"sample.annot"</span>))<span class="sc">$</span>pop.group<span class="ot">-&gt;</span>pops</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(pops<span class="sc">==</span><span class="st">"CEU"</span>)<span class="ot">-&gt;</span>ceu.pop</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read.gdsn</span>(<span class="fu">index.gdsn</span>(genofile, <span class="st">"sample.id"</span>))<span class="ot">-&gt;</span>samples</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>pca3 <span class="ot">&lt;-</span> <span class="fu">snpgdsPCA</span>(genofile, <span class="at">sample.id =</span> samples[ceu.pop], <span class="at">num.thread=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Principal Component Analysis (PCA) on genotypes:
+Excluding 365 SNPs on non-autosomes
+Excluding 1,217 SNPs (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
+    # of samples: 92
+    # of SNPs: 7,506
+    using 2 threads
+    # of principal components: 32
+PCA:    the sum of all selected genotypes (0,1,2) = 702139
+CPU capabilities:
+Thu Aug 31 12:19:37 2023    (internal increment: 5340)
+
+[..................................................]  0%, ETC: ---        
+[==================================================] 100%, completed, 0s
+Thu Aug 31 12:19:37 2023    Begin (eigenvalues and eigenvectors)
+Thu Aug 31 12:19:37 2023    Done.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="W6_2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="closing-gds-objects" class="level2" data-number="12.11">
+<h2 data-number="12.11" class="anchored" data-anchor-id="closing-gds-objects"><span class="header-section-number">12.11</span> Closing GDS objects</h2>
+<p>After working with a GDS object, we need to close it. This can be particularly important in the context of large files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">snpgdsClose</span>(genofile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="discussion-reproducibility" class="level2" data-number="12.12">
+<h2 data-number="12.12" class="anchored" data-anchor-id="discussion-reproducibility"><span class="header-section-number">12.12</span> Discussion: Reproducibility</h2>
+<p>Time permitting, we will discuss the two papers about reproducibility in genome-wide association studies.</p>
+<blockquote class="blockquote">
+<p><em>Key topics</em>:</p>
+<ul>
+<li><p>Why is reproducibility importance in bioinformatics research?</p></li>
+<li><p>How is reproducibility relevant for bioinformatics in industry/clincal settings?</p></li>
+<li><p>Are there any features of bioinformatic data that make reproducibility easier?</p></li>
+<li><p>What features might make reproducibility more difficult?</p></li>
+<li><p>Contrast the results of the 2001 study with the 2021 study regarding reproducibility in genome-wide assocation studies</p></li>
+<li><p>How do these papers affect how we examine the scientific literature in a variant curation context?</p></li>
+</ul>
+</blockquote>
+</section>
+<section id="post-class-quiz" class="level2" data-number="12.13">
+<h2 data-number="12.13" class="anchored" data-anchor-id="post-class-quiz"><span class="header-section-number">12.13</span> Post-class “quiz”</h2>
+<p>Your task will be to copy the enclosed code into your own R notebook (excluding any package installation commands, please run those on the console directly) and knit it into an HTML file. Once you have done this and loaded the working HTML file in your web browser, use the “Print as PDF” option in your browser to save the knitted HTML document as a PDF.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./W6_1.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Week 6 Workshop A - A brief introduction to R in bioinformatics analyses</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
