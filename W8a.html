@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Lochlan Fennell and Matt McGee">
-<meta name="dcterms.date" content="2023-01-01">
 
-<title>GNA5012 - Applied Bioinformatics</title>
+<title>GNA5012 - Applied Bioinformatics - 13&nbsp; Week 8 Workshop A - Basic R data structures and variable types</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./assessment.html" rel="next">
+<link href="./W6_2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">GNA5012 - Applied Bioinformatics</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -96,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./W8a.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></a>
+  <a href="./W8a.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></a>
   </div>
 </li>
     </ul>
@@ -175,26 +173,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">GNA5012 - Applied Bioinformatics</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Lochlan Fennell and Matt McGee </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -205,42 +191,60 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface">Preface</a></li>
-  <li><a href="#course-learning-objectives" id="toc-course-learning-objectives">Course Learning Objectives</a></li>
-  <li><a href="#learning-modes" id="toc-learning-modes">Learning modes</a></li>
-  <li><a href="#navigating-the-course-manual" id="toc-navigating-the-course-manual">Navigating the course manual</a></li>
-  <li><a href="#learning-programming" id="toc-learning-programming">Learning programming</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives"><span class="toc-section-number">13.1</span>  Learning Objectives</a></li>
+  <li><a href="#vectors" id="toc-vectors"><span class="toc-section-number">13.2</span>  Vectors</a></li>
+  <li><a href="#exercise-1-create-a-numeric-vector-called-x-that-starts-at-5-and-goes-up-to-500-in-increments-of-1." id="toc-exercise-1-create-a-numeric-vector-called-x-that-starts-at-5-and-goes-up-to-500-in-increments-of-1."><span class="toc-section-number">13.3</span>  &gt; <strong>Exercise 1</strong>: Create a numeric vector called x that starts at 5 and goes up to 500 in increments of 1.</a></li>
+  <li><a href="#variable-types" id="toc-variable-types"><span class="toc-section-number">13.4</span>  Variable types</a></li>
+  <li><a href="#factors" id="toc-factors"><span class="toc-section-number">13.5</span>  Factors</a></li>
+  <li><a href="#matrices" id="toc-matrices"><span class="toc-section-number">13.6</span>  Matrices</a></li>
+  <li><a href="#data-frames-and-lists" id="toc-data-frames-and-lists"><span class="toc-section-number">13.7</span>  Data Frames and lists</a></li>
   </ul>
 </nav>
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>Welcome to GNA5012 - Applied Bioinformatics</p>
-<p>Welcome to the Course in Applied Bioinformatics! In this course, we will investigate the fascinating field of bioinformatics and its diverse applications in biological research. Bioinformatics combines the strengths of computer science, statistics, and biology in order to analyse and interpret large-scale biological data, ultimately leading to new discoveries and understandings.</p>
-<p>In the past decade, advances in high-throughput technologies have generated a vast quantity of biological data, including genomic sequences, gene expression profiles, and protein structures. Bioinformatics plays a crucial role in making meaning of this wealth of information by providing the necessary tools and methodologies for data analysis, interpretation, and visualisation.</p>
-<p>The objective of this course is to provide you with the knowledge and skills necessary to navigate the bioinformatics landscape and apply computational techniques to solve real-world biological problems. Whether you are a biologist interested in employing computational methods or a computer scientist eager to explore the fascinating world of biology, this course will provide a foundation for bridging the gap between these disciplines.</p>
+<section id="learning-objectives" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">13.1</span> Learning Objectives</h2>
+<p>At the conclusion of today’s workshop students are expected to be able to:</p>
+<ul>
+<li>Understand the strengths and weaknesses of using bash for bioinformatics</li>
+<li>Learn about the benefits of <strong>R</strong> for bioinformatics</li>
+<li>Produce a working installation for <strong>R</strong> and <strong>RStudio</strong> on their personal machine</li>
+</ul>
+<div class="cell">
+
+</div>
 </section>
-<section id="course-learning-objectives" class="level1">
-<h1>Course Learning Objectives</h1>
-<ol type="1">
-<li><p>Evaluate current techniques to generate genomic data and apply standard workflows to analyse them</p></li>
-<li><p>Investigate gene set enrichment, network analysis and data visualisation protocols</p></li>
-<li><p>Evaluate quality and diagnose issues with raw sequencing data and assembled genomes</p></li>
-<li><p>Perform basic computer programming with case studies involving DNA pattern finding</p></li>
-<li><p>Identify both small and large-scale genomic variants</p></li>
-<li><p>Demonstrate team work, scientific communication and peer to peer learning and feedback.</p></li>
-</ol>
+<section id="vectors" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="vectors"><span class="header-section-number">13.2</span> Vectors</h2>
+<p>Vectors are one-dimensional and are arguably R’s simplest type of data object.</p>
 </section>
-<section id="learning-modes" class="level1">
-<h1>Learning modes</h1>
-<p>This course is taught using a flipped class-room model. Each week you are expected to dedicate 2-3 hours perusing the online modules and engaging with readings. These course materials are designed to situate you for the practical elements of the course. We have two workshops, each running for 2 hours. In these sessions you will apply the concepts you have learned to real biological data sets. Attendance at these workshops is essential and successful completion of this course will be very difficult if you don’t take advantage of the applied sessions.</p>
+<section id="exercise-1-create-a-numeric-vector-called-x-that-starts-at-5-and-goes-up-to-500-in-increments-of-1." class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="exercise-1-create-a-numeric-vector-called-x-that-starts-at-5-and-goes-up-to-500-in-increments-of-1."><span class="header-section-number">13.3</span> &gt; <strong>Exercise 1</strong>: Create a numeric vector called x that starts at 5 and goes up to 500 in increments of 1.</h2>
+<blockquote class="blockquote">
+<p><strong>Exercise 2</strong>: Create a character vector called y where the first five values are “A” and the last three are “B”.</p>
+</blockquote>
 </section>
-<section id="navigating-the-course-manual" class="level1">
-<h1>Navigating the course manual</h1>
-<p>This book will serve as your course manual. On the left hand side of the screen you will notice that the book is broken into several chapters. Each chapter represents a weeks worth of practical activities. These are to be completed in class. Complete these at your leisure to improve your bioinformatic ability. Clicking these links will help you navigate between different activities. There is also a search bar to search the entire book.</p>
+<section id="variable-types" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="variable-types"><span class="header-section-number">13.4</span> Variable types</h2>
+<p>In R, it is often essential to recognize the specific type of data stored in an object, as it affects the operations and functions that can be applied to it.</p>
+<p>Exercise 3: Use the is.factor(), is.numeric(), is.character(), and str() commands on x and y to show their types and structure.</p>
+<p>Exercise 4: Create a character vector with 50 values of “A”, 50 values of “B”, and 50 values of “C”. (Hint: Use the rep(X,N) command to repeat a given value X N times)</p>
 </section>
-<section id="learning-programming" class="level1">
-<h1>Learning programming</h1>
-<p>This course will introduce you to programming and scripting using Bash. We have designed this course in a way that will teach you Bash syntax and also programming logic. Learning programming can be tough and will require a degree of critical thinking and deep engagement with the content and resources. In some exercises we will provide example code and others you will be expected to use manuals and other guides to design the code yourself. When you are completing these exercises we <strong>strongly encourage</strong> you to avoid simply copying and pasting code from this manual or other sources. You will learn best by working through the exercises yourself and making mistakes! We are here to guide you through this process.</p>
+<section id="factors" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="factors"><span class="header-section-number">13.5</span> Factors</h2>
+<p>Factors in R are used to work with categorical data, which can be ordered or unordered. A factor’s levels define the possible values that observations in the data can take.</p>
+<p>Exercise 5: Create a factor from your character vector (from Exercise 4), with levels “A”,“B”, and “C” in that order, as well as another factor where the levels “C”,“B”, and “A” in that order.</p>
+<p>Exercise 6: Convert each of your new factors to integer vectors.</p>
+</section>
+<section id="matrices" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="matrices"><span class="header-section-number">13.6</span> Matrices</h2>
+<p>Matrices are two-dimensional arrays that can store data of a single type. They are useful in various statistical analyses and operations.</p>
+<p>Exercise 7: Create a numeric vector of length 9, then use that numeric vector to define a matrix with 3 rows and 3 columns.</p>
+<p>Exercise 8: Use the ? command to look at the options for the matrix() command. Create a new 3 x 3 matrix using the byrow argument. How does this differ from your results for Exercise 7?</p>
+</section>
+<section id="data-frames-and-lists" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="data-frames-and-lists"><span class="header-section-number">13.7</span> Data Frames and lists</h2>
+<p>Data frames and lists allow us to store and manage data more flexibly, as they can contain various types of data structures. Understanding them is key to data management and manipulation in R. Let’s create and inspect data frames and lists through the following exercises:</p>
+<p>Exercise 9: Create a data frame with your original character vector (from Exercise 4), the two factors (from Exercise 5), and the two integer vectors (from Exercise 6). Please also include column names.</p>
+<p>Exercise 10: Create a list containing x and y from Exercises 1 and 2, as well as your data frame from Exercise 9.</p>
 
 
 </section>
@@ -381,11 +385,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
+      <a href="./W6_2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 6 Workshop B - Reproducible research and R notebooks</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./assessment.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Assessment 1 - Capstone A</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

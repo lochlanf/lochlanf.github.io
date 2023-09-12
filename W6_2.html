@@ -93,6 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./W8a.html" rel="next">
 <link href="./W6_1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -220,6 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./W6_2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Week 6 Workshop B - Reproducible research and R notebooks</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./W8a.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -305,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="showcasing-some-features-of-the-snprelate-package" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="showcasing-some-features-of-the-snprelate-package"><span class="header-section-number">12.5</span> Showcasing some features of the SNPRelate package</h2>
 <p>The following content is heavily based on the primary <a href="https://bioconductor.org/packages/release/bioc/vignettes/SNPRelate/inst/doc/SNPRelate.html">tutorial</a> for the <em>SNPRelate</em> package, with some additional commentary. Don’t worry about understanding all of the code, this is intended to just be a demonstration of some basic features. You will learn how to use these commands and data objects in future weeks.</p>
-<p>First, we’ll load the relevant packages into the R environment with the <em> </em>require()** command.</p>
+<p>First, we’ll load the relevant packages into the R environment with the require()** command.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gdsfmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -373,29 +379,29 @@ Excluding 1 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
     sliding window: 500,000 basepairs, Inf SNPs
     |LD| threshold: 0.25
     method: composite
-Chromosome 1: 82.40%, 590/716
-Chromosome 2: 79.38%, 589/742
-Chromosome 3: 80.79%, 492/609
-Chromosome 4: 80.78%, 454/562
-Chromosome 5: 83.04%, 470/566
-Chromosome 6: 81.24%, 459/565
-Chromosome 7: 81.78%, 386/472
-Chromosome 8: 77.87%, 380/488
-Chromosome 9: 82.21%, 342/416
-Chromosome 10: 82.61%, 399/483
-Chromosome 11: 81.66%, 365/447
+Chromosome 1: 82.26%, 589/716
+Chromosome 2: 79.51%, 590/742
+Chromosome 3: 80.62%, 491/609
+Chromosome 4: 81.32%, 457/562
+Chromosome 5: 82.86%, 469/566
+Chromosome 6: 81.06%, 458/565
+Chromosome 7: 81.14%, 383/472
+Chromosome 8: 78.28%, 382/488
+Chromosome 9: 82.69%, 344/416
+Chromosome 10: 83.02%, 401/483
+Chromosome 11: 81.88%, 366/447
 Chromosome 12: 82.44%, 352/427
 Chromosome 13: 82.27%, 283/344
-Chromosome 14: 81.91%, 231/282
-Chromosome 15: 85.50%, 224/262
-Chromosome 16: 79.86%, 222/278
+Chromosome 14: 82.27%, 232/282
+Chromosome 15: 84.73%, 222/262
+Chromosome 16: 80.22%, 223/278
 Chromosome 17: 78.74%, 163/207
-Chromosome 18: 81.95%, 218/266
-Chromosome 19: 90.83%, 109/120
-Chromosome 20: 79.48%, 182/229
+Chromosome 18: 81.58%, 217/266
+Chromosome 19: 90.00%, 108/120
+Chromosome 20: 79.91%, 183/229
 Chromosome 21: 81.75%, 103/126
-Chromosome 22: 84.48%, 98/116
-7,111 markers are selected in total.</code></pre>
+Chromosome 22: 83.62%, 97/116
+7,113 markers are selected in total.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>snpset.id <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">unname</span>(snpset))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -415,12 +421,12 @@ Excluding 1 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
     # of principal components: 32
 PCA:    the sum of all selected genotypes (0,1,2) = 2446510
 CPU capabilities:
-Thu Aug 31 12:19:35 2023    (internal increment: 1760)
+Wed Sep 13 09:38:10 2023    (internal increment: 1760)
 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed, 0s
-Thu Aug 31 12:19:35 2023    Begin (eigenvalues and eigenvectors)
-Thu Aug 31 12:19:35 2023    Done.</code></pre>
+Wed Sep 13 09:38:10 2023    Begin (eigenvalues and eigenvectors)
+Wed Sep 13 09:38:10 2023    Done.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -432,20 +438,20 @@ Thu Aug 31 12:19:35 2023    Done.</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pca2 <span class="ot">&lt;-</span> <span class="fu">snpgdsPCA</span>(genofile, <span class="at">snp.id=</span>snpset.id, <span class="at">num.thread=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Principal Component Analysis (PCA) on genotypes:
-Excluding 1,977 SNPs (non-autosomes or non-selection)
+Excluding 1,975 SNPs (non-autosomes or non-selection)
 Excluding 0 SNP (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
     # of samples: 279
-    # of SNPs: 7,111
+    # of SNPs: 7,113
     using 2 threads
     # of principal components: 32
-PCA:    the sum of all selected genotypes (0,1,2) = 1988089
+PCA:    the sum of all selected genotypes (0,1,2) = 1995142
 CPU capabilities:
-Thu Aug 31 12:19:37 2023    (internal increment: 1760)
+Wed Sep 13 09:38:13 2023    (internal increment: 1760)
 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed, 0s
-Thu Aug 31 12:19:37 2023    Begin (eigenvalues and eigenvectors)
-Thu Aug 31 12:19:37 2023    Done.</code></pre>
+Wed Sep 13 09:38:13 2023    Begin (eigenvalues and eigenvectors)
+Wed Sep 13 09:38:13 2023    Done.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -473,12 +479,12 @@ Excluding 1,217 SNPs (monomorphic: TRUE, MAF: NaN, missing rate: NaN)
     # of principal components: 32
 PCA:    the sum of all selected genotypes (0,1,2) = 702139
 CPU capabilities:
-Thu Aug 31 12:19:37 2023    (internal increment: 5340)
+Wed Sep 13 09:38:13 2023    (internal increment: 5340)
 
 [..................................................]  0%, ETC: ---        
 [==================================================] 100%, completed, 0s
-Thu Aug 31 12:19:37 2023    Begin (eigenvalues and eigenvectors)
-Thu Aug 31 12:19:37 2023    Done.</code></pre>
+Wed Sep 13 09:38:13 2023    Begin (eigenvalues and eigenvectors)
+Wed Sep 13 09:38:13 2023    Done.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -656,6 +662,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./W8a.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Week 8 Workshop A - Basic R data structures and variable types</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
